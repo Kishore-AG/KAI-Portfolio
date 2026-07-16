@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🧠 KAI OS
+#  KAI OS
 ### AI-Powered Operating System Portfolio
 
 A full-stack, dynamically manageable developer portfolio with a built-in AI assistant that can answer questions about the projects, skills, and experience inside it — in real time.
@@ -102,7 +102,7 @@ KAI-OS/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/KAI-OS.git
+git clone https://github.com/Kishore-AG/KAI-Portfolio
 cd KAI-OS
 ```
 
@@ -126,8 +126,6 @@ ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=60
 GROQ_API_KEY=your-groq-api-key
 ```
-
-> ⚠️ Never commit your `.env` file. It's already excluded via `.gitignore`.
 
 ### 4. Create an admin user
 
