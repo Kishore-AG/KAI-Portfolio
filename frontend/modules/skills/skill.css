@@ -1,0 +1,111 @@
+/*==================================================
+SKILLS SECTION
+==================================================*/
+
+.skills-section{
+
+    margin-top:6rem;
+
+    padding:0 1rem;
+
+}
+
+/*==================================================
+GRID
+==================================================*/
+
+.skills-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:1.5rem;
+
+}
+
+/*==================================================
+CARD
+==================================================*/
+
+.skill-card{
+
+    background:var(--glass-bg);
+
+    border:1px solid var(--glass-border);
+
+    border-radius:var(--radius-lg);
+
+    backdrop-filter:blur(20px);
+
+    padding:1.25rem 1.4rem;
+
+    min-height:150px;
+
+    transition:all .3s ease;
+
+}
+
+.skill-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:rgba(59,130,246,.35);
+
+    box-shadow:0 15px 35px rgba(59,130,246,.15);
+
+}
+
+/*==================================================
+TITLE
+==================================================*/
+
+.skill-title{
+
+    font-size:1.6rem;
+
+    font-weight:700;
+
+    margin-bottom:1.5rem;
+
+    color:var(--text-primary);
+
+}
+
+/*==================================================
+CHIPS
+==================================================*/
+
+.skill-list{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:.75rem;
+
+}
+
+/* Make chips slightly smaller only in Skills */
+
+.skill-list .chip{
+
+    padding:.45rem .9rem;
+
+    font-size:.9rem;
+
+}
+
+/*==================================================
+RESPONSIVE
+==================================================*/
+
+@media(max-width:992px){
+
+    .skills-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}

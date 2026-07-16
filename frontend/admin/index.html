@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>KAI OS Admin Dashboard</title>
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.css"
+/>
+    <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="./assets/css/dashboard.css">
+    <link rel="stylesheet" href="./assets/css/modules.css">
+    <link rel="stylesheet" href="./css/cropper.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- Sidebar -->
+
+        <aside class="sidebar">
+
+            <h2>KAI OS</h2>
+
+            <ul>
+
+                <li data-page="dashboard">Dashboard</li>
+
+                <li data-page="profile">Profile</li>
+
+                <li data-page="projects">Projects</li>
+
+                <li data-page="research">Research</li>
+
+                <li data-page="skills">Skills</li>
+
+                <li data-page="education">Education</li>
+
+                <li data-page="certifications">Certifications</li>
+
+                <li data-page="resume">Resume</li>
+
+                <li data-page="knowledge">Knowledge</li>
+
+                <li id="logout-btn">Logout</li>
+
+            </ul>
+
+        </aside>
+
+        <!-- Main Content -->
+
+        <main id="content">
+
+            <h1>Welcome to KAI OS Admin</h1>
+
+            <p>Select a module from the sidebar.</p>
+
+        </main>
+
+    </div>
+
+    <script type="module" src="./js/dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js"></script>
+
+</body>
+
+</html>

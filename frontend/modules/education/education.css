@@ -1,0 +1,171 @@
+/* ==========================================================
+   EDUCATION SECTION
+========================================================== */
+
+.education-section{
+
+    padding:8rem 0;
+
+}
+
+/* ==========================================================
+   EDUCATION GRID
+========================================================== */
+
+#education-grid{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:2rem;
+
+}
+
+/* ==========================================================
+   EDUCATION CARD
+========================================================== */
+
+.education-card{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:2rem;
+
+    padding:2rem;
+
+    background:var(--glass-bg);
+
+    border:1px solid var(--glass-border);
+
+    border-radius:var(--radius-lg);
+
+    backdrop-filter:blur(20px);
+
+    transition:all .3s ease;
+
+}
+
+.education-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:rgba(59,130,246,.35);
+
+    box-shadow:0 15px 35px rgba(59,130,246,.15);
+
+}
+
+.education-card:hover .education-icon{
+
+    box-shadow:0 0 0 4px rgba(59,130,246,.15), 0 0 20px rgba(59,130,246,.25);
+
+    transform:scale(1.03);
+
+}
+
+/* ==========================================================
+   ICON
+========================================================== */
+
+.education-icon{
+
+    width:70px;
+
+    height:70px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:2rem;
+
+    border-radius:50%;
+
+    background:rgba(59,130,246,.12);
+
+    transition:all .3s ease;
+
+}
+
+.education-badge{
+
+    margin-left:auto;
+
+    align-self:flex-start;
+
+    padding:.4rem .8rem;
+
+    border-radius:999px;
+
+    background:rgba(34,197,94,.15);
+
+    color:var(--color-success);
+
+    font-size:.85rem;
+
+    font-weight:600;
+
+    border:1px solid rgba(34,197,94,.25);
+
+}
+
+/* ==========================================================
+   CONTENT
+========================================================== */
+
+.education-degree{
+
+    margin-bottom:.5rem;
+
+}
+
+.education-field{
+
+    color:var(--color-primary);
+
+    margin-bottom:.75rem;
+
+}
+
+.education-college{
+
+    color:var(--text-secondary);
+
+    margin-bottom:1rem;
+
+}
+
+.education-meta{
+
+    display:flex;
+
+    gap:2rem;
+
+    flex-wrap:wrap;
+
+    color:var(--text-muted);
+
+    font-size:.95rem;
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:768px){
+
+    .education-card{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+}

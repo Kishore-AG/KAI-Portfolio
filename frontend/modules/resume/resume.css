@@ -1,0 +1,120 @@
+/* ==========================================================
+   RESUME STYLES
+========================================================== */
+
+.resume-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
+}
+
+.resume-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(59, 130, 246, 0.35);
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1);
+}
+
+.resume-header {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.resume-icon {
+    font-size: 2rem;
+    min-width: 50px;
+    text-align: center;
+}
+
+.resume-details {
+    flex: 1;
+}
+
+.resume-filename {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--text-primary);
+}
+
+.resume-version {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.resume-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.resume-size {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.resume-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+/* ==========================================================
+   PROFILE BIO & LOCATION
+========================================================== */
+
+.identity-bio {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 1rem 0 0.75rem;
+}
+
+.identity-location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.identity-location::before {
+    content: "📍";
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 768px) {
+    .resume-card {
+        padding: 1rem;
+    }
+
+    .resume-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .resume-icon {
+        width: 100%;
+    }
+
+    .resume-actions {
+        width: 100%;
+    }
+
+    .resume-actions .btn {
+        flex: 1;
+    }
+}

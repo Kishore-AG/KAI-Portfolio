@@ -1,0 +1,101 @@
+/*==================================================
+FOOTER
+==================================================*/
+
+.footer{
+
+    padding:3rem 0 2.5rem;
+
+}
+
+/*==================================================
+CONTENT
+==================================================*/
+
+.footer-content{
+
+    max-width:900px;
+
+    margin:0 auto;
+
+    text-align:center;
+
+     margin-top: 0rem;
+
+}
+
+/*==================================================
+DIVIDER
+==================================================*/
+
+.footer-divider{
+
+    width:100%;
+
+    height:1px;
+
+    background:rgba(255,255,255,.08);
+
+    margin-bottom:2rem;
+
+}
+
+/*==================================================
+COPYRIGHT
+==================================================*/
+
+.footer-copy{
+
+    color:var(--text-primary);
+
+    font-size:.95rem;
+
+    font-weight:500;
+
+    margin-bottom:.75rem;
+
+}
+
+/*==================================================
+TAGLINE
+==================================================*/
+
+.footer-tagline{
+
+    color:var(--text-secondary);
+
+    font-size:.95rem;
+
+    letter-spacing:.5px;
+
+    line-height:1.8;
+
+}
+
+/*==================================================
+RESPONSIVE
+==================================================*/
+
+@media(max-width:768px){
+
+    .footer{
+
+        padding:2.5rem 0 2rem;
+
+    }
+
+    .footer-copy{
+
+        font-size:.9rem;
+
+    }
+
+    .footer-tagline{
+
+        font-size:.85rem;
+
+        line-height:1.6;
+
+    }
+
+}

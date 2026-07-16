@@ -1,0 +1,297 @@
+/* ===========================================================
+   KAI OS
+   BASE STYLES
+   Version: 1.0
+=========================================================== */
+
+/* ===========================================================
+   HTML
+=========================================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===========================================================
+   BODY
+=========================================================== */
+
+body {
+
+    background: var(--color-bg);
+
+    color: var(--text-primary);
+
+    font-family: var(--font-body);
+
+    overflow-x: hidden;
+
+    min-height: 100vh;
+
+    position: relative;
+}
+
+/* ===========================================================
+   BACKGROUND
+=========================================================== */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        radial-gradient(circle at top,
+            rgba(59,130,246,.12),
+            transparent 40%),
+
+        radial-gradient(circle at bottom right,
+            rgba(139,92,246,.10),
+            transparent 35%),
+
+        var(--color-bg);
+
+    z-index: var(--z-background);
+
+}
+
+/* ===========================================================
+   CONTAINER
+=========================================================== */
+
+.container {
+
+    width: min(92%, var(--container-width));
+
+    margin-inline: auto;
+}
+
+/* ===========================================================
+   SECTION
+=========================================================== */
+
+section {
+
+    padding: 6.5rem 0;
+}
+
+/* ===========================================================
+   IMAGES
+=========================================================== */
+
+img {
+
+    max-width: 100%;
+
+    height: auto;
+
+    display: block;
+}
+
+.avatar-placeholder{
+
+    width:160px;
+
+    height:160px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    border:4px solid rgba(255,255,255,.15);
+
+    box-shadow:
+        0 0 25px rgba(0,255,255,.25);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#101828;
+
+}
+
+.avatar-placeholder img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    object-position:center 20%;
+
+    border-radius:50%;
+
+}
+
+.image-upload{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+    align-items:flex-start;
+
+}
+
+.project-image-preview{
+
+    width:100%;
+
+    max-width:420px;
+
+    aspect-ratio:16/9;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+    border:2px solid rgba(255,255,255,.1);
+
+    background:#111827;
+
+}
+
+.featured-project img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 12px;
+}
+/* ===========================================================
+   BUTTON
+=========================================================== */
+
+button {
+
+    border: none;
+
+    background: transparent;
+}
+
+/* ===========================================================
+   SCROLLBAR
+=========================================================== */
+
+::-webkit-scrollbar {
+
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+
+    background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+
+    background: var(--color-surface-light);
+
+    border-radius: var(--radius-round);
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+    background: var(--color-primary);
+}
+
+/* Firefox */
+
+* {
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+
+        var(--color-surface-light)
+
+        var(--color-bg);
+}
+
+/* ===========================================================
+   UTILITIES
+=========================================================== */
+
+.hidden {
+
+    display: none !important;
+}
+
+.flex {
+
+    display: flex;
+}
+
+.grid {
+
+    display: grid;
+    align-items: start;
+}
+
+.center {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.w-100 {
+
+    width: 100%;
+}
+
+.h-100 {
+
+    height: 100%;
+}
+
+.rounded {
+
+    border-radius: var(--radius-lg);
+}
+
+.shadow {
+
+    box-shadow: var(--shadow-soft);
+}
+
+.glow {
+
+    box-shadow: var(--glow-primary);
+}
+
+/* ===========================================================
+   FOCUS
+=========================================================== */
+
+:focus-visible {
+
+    outline: 2px solid var(--color-primary);
+
+    outline-offset: 3px;
+}
+
+/* ===========================================================
+   TRANSITIONS
+=========================================================== */
+
+* {
+
+    transition:
+
+        background-color var(--transition-fast),
+
+        color var(--transition-fast),
+
+        border-color var(--transition-fast);
+}

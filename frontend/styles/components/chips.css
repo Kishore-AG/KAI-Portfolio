@@ -1,0 +1,116 @@
+/* ==========================================================
+   KAI OS
+   CHIP COMPONENT
+   Version : 1.0
+========================================================== */
+
+
+/* ==========================================================
+   CHIP CONTAINER
+========================================================== */
+
+.chip{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:.5rem;
+
+    padding:.75rem 1rem;
+
+    border:1px solid var(--glass-border);
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.04);
+
+    color:var(--text-primary);
+
+    font-size:var(--text-sm);
+
+    font-weight:500;
+
+    cursor:pointer;
+
+    transition:all .3s ease;
+
+    backdrop-filter:blur(20px);
+
+    white-space:nowrap;
+
+}
+
+
+/* ==========================================================
+   HOVER
+========================================================== */
+
+.chip:hover{
+
+    background:rgba(59,130,246,.12);
+
+    border-color:rgba(59,130,246,.45);
+
+    color:white;
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 0 18px rgba(59,130,246,.25);
+
+}
+
+
+/* ==========================================================
+   ACTIVE
+========================================================== */
+
+.chip:active{
+
+    transform:scale(.96);
+
+}
+
+
+/* ==========================================================
+   FOCUS
+========================================================== */
+
+.chip:focus-visible{
+
+    outline:2px solid var(--color-primary);
+
+    outline-offset:4px;
+
+}
+
+
+/* ==========================================================
+   ICON
+========================================================== */
+
+.chip .chip-icon{
+
+    font-size:1rem;
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:768px){
+
+    .chip{
+
+        width:100%;
+
+        justify-content:flex-start;
+
+    }
+
+}

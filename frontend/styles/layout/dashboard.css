@@ -1,0 +1,115 @@
+/* ==========================================================
+   KAI OS
+   Dashboard Layout
+   Version : 1.0
+========================================================== */
+
+/* ==========================================================
+   DASHBOARD
+========================================================== */
+
+.dashboard {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: start;
+
+    padding-top: 120px;
+
+    padding-bottom: 80px;
+}
+
+
+/* ==========================================================
+   DASHBOARD GRID
+========================================================== */
+
+.dashboard-grid {
+
+    display:grid;
+
+    align-items:start;
+
+    grid-template-columns: 1fr 1.5fr;
+
+    grid-template-areas:
+
+        "identity assistant"
+
+        "quick status";
+
+    gap: var(--space-6);
+}
+
+
+/* ==========================================================
+   PANELS
+========================================================== */
+
+.dashboard-panel {
+
+    min-height: 280px;
+}
+
+
+/* ==========================================================
+   GRID AREAS
+========================================================== */
+
+.identity-panel {
+
+    grid-area: identity;
+}
+
+.assistant-panel {
+
+    grid-area: assistant;
+}
+
+.quick-panel {
+
+    grid-area: quick;
+}
+
+.status-panel {
+
+    grid-area: status;
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width:1024px){
+
+    .dashboard-grid{
+
+        grid-template-columns:1fr;
+
+        grid-template-areas:
+
+        "identity"
+
+        "assistant"
+
+        "quick"
+
+        "status";
+    }
+
+}
+
+
+@media (max-width:768px){
+
+    .dashboard{
+
+        padding-top:90px;
+
+        padding-bottom:40px;
+    }
+
+}

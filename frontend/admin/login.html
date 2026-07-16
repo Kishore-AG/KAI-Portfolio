@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>KAI OS Admin Login</title>
+
+    <style>
+
+        *{
+
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial,Helvetica,sans-serif;
+
+        }
+
+        body{
+
+            height:100vh;
+
+            display:flex;
+
+            justify-content:center;
+
+            align-items:center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0f172a,
+                    #111827,
+                    #1e293b
+                );
+
+            overflow:hidden;
+
+        }
+
+        body::before{
+
+            content:"";
+
+            position:absolute;
+
+            width:500px;
+            height:500px;
+
+            background:#2563eb;
+
+            border-radius:50%;
+
+            filter:blur(140px);
+
+            opacity:.18;
+
+            top:-150px;
+            left:-120px;
+
+        }
+
+        body::after{
+
+            content:"";
+
+            position:absolute;
+
+            width:400px;
+            height:400px;
+
+            background:#06b6d4;
+
+            border-radius:50%;
+
+            filter:blur(120px);
+
+            opacity:.15;
+
+            bottom:-150px;
+            right:-100px;
+
+        }
+
+        #login-container{
+
+            width:420px;
+
+            padding:45px;
+
+            background:rgba(255,255,255,.06);
+
+            backdrop-filter:blur(18px);
+
+            border:1px solid rgba(255,255,255,.08);
+
+            border-radius:20px;
+
+            box-shadow:
+
+                0 15px 40px rgba(0,0,0,.45);
+
+            position:relative;
+
+            z-index:2;
+
+        }
+
+        .logo{
+
+            text-align:center;
+
+            font-size:3rem;
+
+            margin-bottom:10px;
+
+        }
+
+        h1{
+
+            text-align:center;
+
+            color:white;
+
+            font-size:2rem;
+
+            margin-bottom:6px;
+
+        }
+
+        .subtitle{
+
+            text-align:center;
+
+            color:#94a3b8;
+
+            font-size:.95rem;
+
+            margin-bottom:35px;
+
+        }
+
+        label{
+
+            display:block;
+
+            color:#cbd5e1;
+
+            margin-bottom:8px;
+
+            font-size:.9rem;
+
+        }
+
+        input{
+
+            width:100%;
+
+            padding:14px 16px;
+
+            border:none;
+
+            outline:none;
+
+            border-radius:10px;
+
+            background:rgba(255,255,255,.08);
+
+            color:white;
+
+            margin-bottom:20px;
+
+            transition:.3s;
+
+            border:1px solid transparent;
+
+        }
+
+        input::placeholder{
+
+            color:#94a3b8;
+
+        }
+
+        input:focus{
+
+            border-color:#3b82f6;
+
+            background:rgba(255,255,255,.12);
+
+            box-shadow:0 0 12px rgba(59,130,246,.35);
+
+        }
+
+        button{
+
+            width:100%;
+
+            padding:14px;
+
+            border:none;
+
+            border-radius:10px;
+
+            background:#2563eb;
+
+            color:white;
+
+            font-size:1rem;
+
+            font-weight:bold;
+
+            cursor:pointer;
+
+            transition:.3s;
+
+        }
+
+        button:hover{
+
+            background:#1d4ed8;
+
+            transform:translateY(-2px);
+
+            box-shadow:0 8px 20px rgba(37,99,235,.45);
+
+        }
+
+        #login-message{
+
+            margin-top:18px;
+
+            text-align:center;
+
+            color:#ef4444;
+
+            min-height:20px;
+
+            font-size:.9rem;
+
+        }
+
+        .footer{
+
+            margin-top:30px;
+
+            text-align:center;
+
+            color:#64748b;
+
+            font-size:.8rem;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div id="login-container">
+
+
+        <h1>
+
+            KAI OS Admin
+
+        </h1>
+
+        <div class="subtitle">
+
+            Secure Administrator Login
+
+        </div>
+
+        <form id="login-form">
+
+            <label for="username">
+
+                Username
+
+            </label>
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Enter Username"
+                required
+            >
+
+            <label for="password">
+
+                Password
+
+            </label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter Password"
+                required
+            >
+
+            <button
+                type="submit"
+                id="login-btn"
+            >
+
+                Login
+
+            </button>
+
+        </form>
+
+        <p id="login-message"></p>
+
+        <div class="footer">
+
+            KAI OS • AI Portfolio Management System
+
+        </div>
+
+    </div>
+
+    <script
+        type="module"
+        src="./js/admin.js"
+    ></script>
+
+</body>
+
+</html>

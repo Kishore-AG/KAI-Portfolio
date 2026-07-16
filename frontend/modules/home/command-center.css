@@ -1,0 +1,107 @@
+/* ==========================================================
+   COMMAND CENTER
+========================================================== */
+
+.command-center{
+
+    display:flex;
+
+    flex-direction:column;
+
+    height:100%;
+
+    gap:2rem;
+}
+
+.command-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.command-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:1rem;
+}
+
+.command-title h2{
+
+    margin:0;
+}
+
+.assistant-status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.6rem;
+
+    color:var(--color-success);
+
+    font-size:.9rem;
+
+    font-weight:600;
+}
+
+.assistant-intro{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:.6rem;
+}
+
+.assistant-intro h3{
+
+    margin:0;
+}
+
+.assistant-intro p{
+
+    margin:0;
+
+    color:var(--text-secondary);
+
+    max-width:500px;
+}
+
+.assistant-capabilities{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:1rem;
+}
+
+.capability{
+
+    color:var(--text-secondary);
+}
+
+.assistant-suggestions{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:1rem;
+}
+
+.assistant-input{
+
+    display:flex;
+
+    gap:1rem;
+
+    margin-top:auto;
+}

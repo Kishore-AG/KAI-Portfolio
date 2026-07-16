@@ -1,0 +1,165 @@
+/* =======================================
+   KAI CHAT
+======================================= */
+
+.kai-chat-wrapper{
+
+    height:262px;
+
+    margin:25px 0;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.kai-chat{
+
+    height:100%;
+
+    overflow-y:auto;
+
+    padding:25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    scroll-behavior:smooth;
+
+}
+
+.kai-message{
+
+    max-width:82%;
+
+    padding:16px 20px;
+
+    border-radius:18px;
+
+    line-height:1.7;
+
+    font-size:.95rem;
+
+    animation:fadeUp .3s ease;
+
+}
+
+.kai-message.assistant{
+
+    align-self:flex-start;
+
+    background:#162033;
+
+    border:1px solid #2c3f5e;
+
+    color:#ffffff;
+
+}
+
+.kai-message.user{
+
+    align-self:flex-end;
+
+    background:linear-gradient(
+
+        135deg,
+
+        #2563eb,
+
+        #4f46e5
+
+    );
+
+    color:white;
+
+}
+
+#kai-typing{
+
+    display:flex;
+
+    gap:6px;
+
+}
+
+.typing-dot{
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:white;
+
+    animation:typing 1s infinite;
+
+}
+
+.typing-dot:nth-child(2){
+
+    animation-delay:.2s;
+
+}
+
+.typing-dot:nth-child(3){
+
+    animation-delay:.4s;
+
+}
+
+@keyframes typing{
+
+    0%{
+
+        transform:translateY(0);
+
+        opacity:.4;
+
+    }
+
+    50%{
+
+        transform:translateY(-6px);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+        opacity:.4;
+
+    }
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}

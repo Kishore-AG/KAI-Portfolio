@@ -1,0 +1,174 @@
+/* ===========================================================
+   KAI OS - DESIGN TOKENS
+   Version : 1.0
+=========================================================== */
+
+:root {
+
+    /* ======================================================
+       COLORS
+    ====================================================== */
+
+    /* Background */
+    --color-bg: #070B14;
+    --color-bg-secondary: #0B1220;
+    --color-surface: #111827;
+    --color-surface-light: #1F2937;
+
+    /* Glass */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-bg-hover: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.12);
+
+    /* Primary */
+    --color-primary: #3B82F6;
+    --color-primary-light: #60A5FA;
+    --color-primary-dark: #2563EB;
+
+    /* Secondary */
+    --color-secondary: #8B5CF6;
+    --color-secondary-light: #A78BFA;
+
+    /* Status */
+    --color-success: #10B981;
+    --color-warning: #F59E0B;
+    --color-danger: #EF4444;
+    --color-info: #38BDF8;
+
+    /* Text */
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #94A3B8;
+    --text-disabled: #64748B;
+
+    /* Border */
+    --border-color: rgba(255,255,255,0.08);
+
+    /* ======================================================
+       TYPOGRAPHY
+    ====================================================== */
+
+    --font-heading: "Space Grotesk", sans-serif;
+    --font-body: "Inter", sans-serif;
+    --font-code: "JetBrains Mono", monospace;
+
+    /* ======================================================
+       FONT SIZES
+    ====================================================== */
+
+    --text-xs: .75rem;
+    --text-sm: .875rem;
+    --text-md: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 2rem;
+    --text-4xl: 2.75rem;
+    --text-5xl: 3.5rem;
+
+    /* ======================================================
+       FONT WEIGHTS
+    ====================================================== */
+
+    --fw-light: 300;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+
+    /* ======================================================
+       SPACING
+    ====================================================== */
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-7: 32px;
+    --space-8: 40px;
+    --space-9: 48px;
+    --space-10: 64px;
+    --space-11: 80px;
+    --space-12: 96px;
+
+    /* ======================================================
+       BORDER RADIUS
+    ====================================================== */
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-round: 999px;
+
+    /* ======================================================
+       GLASS BLUR
+    ====================================================== */
+
+    --blur-sm: 8px;
+    --blur-md: 16px;
+    --blur-lg: 24px;
+
+    /* ======================================================
+       SHADOWS
+    ====================================================== */
+
+    --shadow-soft:
+        0 8px 24px rgba(0,0,0,.25);
+
+    --shadow-medium:
+        0 12px 32px rgba(0,0,0,.35);
+
+    --shadow-floating:
+        0 20px 48px rgba(0,0,0,.45);
+
+    /* ======================================================
+       GLOWS
+    ====================================================== */
+
+    --glow-primary:
+        0 0 20px rgba(59,130,246,.45);
+
+    --glow-secondary:
+        0 0 20px rgba(139,92,246,.45);
+
+    /* ======================================================
+       TRANSITIONS
+    ====================================================== */
+
+    --transition-fast: 150ms ease;
+    --transition-normal: 300ms ease;
+    --transition-slow: 600ms ease;
+
+    /* ======================================================
+       Z-INDEX
+    ====================================================== */
+
+    --z-background: -1;
+    --z-default: 1;
+    --z-navbar: 100;
+    --z-dropdown: 500;
+    --z-modal: 900;
+    --z-loader: 999;
+    --z-toast: 1000;
+
+    /* ======================================================
+       CONTAINER
+    ====================================================== */
+
+    --container-width: 1400px;
+
+    /* ======================================================
+       BREAKPOINTS
+       (Documentation only)
+    ====================================================== */
+
+    /*
+    Mobile  : 320px
+    Tablet  : 768px
+    Laptop  : 1024px
+    Desktop : 1440px
+    */
+}

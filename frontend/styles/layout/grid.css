@@ -1,0 +1,135 @@
+/* ==========================================================
+   KAI OS
+   GRID ENGINE V2
+   Version : 2.0
+========================================================== */
+
+
+/* ==========================================================
+   CONTAINERS
+========================================================== */
+
+.container{
+    width:min(92%,var(--container-width));
+    margin-inline:auto;
+}
+
+.container-sm{
+    width:min(92%,900px);
+    margin-inline:auto;
+}
+
+.container-lg{
+    width:min(94%,1600px);
+    margin-inline:auto;
+}
+
+.container-fluid{
+    width:100%;
+    padding-inline:var(--space-6);
+}
+
+
+/* ==========================================================
+   GRID
+========================================================== */
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(12,minmax(0,1fr));
+
+    gap:var(--space-6);
+}
+
+
+/* ==========================================================
+   COLUMN SPAN
+========================================================== */
+
+.col-1{grid-column:span 1;}
+.col-2{grid-column:span 2;}
+.col-3{grid-column:span 3;}
+.col-4{grid-column:span 4;}
+.col-5{grid-column:span 5;}
+.col-6{grid-column:span 6;}
+.col-7{grid-column:span 7;}
+.col-8{grid-column:span 8;}
+.col-9{grid-column:span 9;}
+.col-10{grid-column:span 10;}
+.col-11{grid-column:span 11;}
+.col-12{grid-column:span 12;}
+
+
+/* ==========================================================
+   GAP
+========================================================== */
+
+.gap-0{gap:0;}
+.gap-1{gap:var(--space-2);}
+.gap-2{gap:var(--space-4);}
+.gap-3{gap:var(--space-6);}
+.gap-4{gap:var(--space-8);}
+.gap-5{gap:var(--space-10);}
+
+
+/* ==========================================================
+   FLEX UTILITIES
+========================================================== */
+
+.flex{display:flex;}
+
+.flex-column{
+    display:flex;
+    flex-direction:column;
+}
+
+.justify-start{justify-content:flex-start;}
+.justify-center{justify-content:center;}
+.justify-between{justify-content:space-between;}
+.justify-end{justify-content:flex-end;}
+
+.align-start{align-items:flex-start;}
+.align-center{align-items:center;}
+.align-end{align-items:flex-end;}
+
+
+/* ==========================================================
+   WIDTH
+========================================================== */
+
+.w-100{width:100%;}
+.h-100{height:100%;}
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width:1200px){
+
+    .col-4,
+    .col-5,
+    .col-6,
+    .col-7,
+    .col-8{
+
+        grid-column:span 12;
+    }
+
+}
+
+@media (max-width:768px){
+
+    [class*="col-"]{
+
+        grid-column:span 12;
+    }
+
+    .container{
+
+        width:94%;
+    }
+
+}

@@ -1,0 +1,188 @@
+/* ===========================================================
+   KAI OS - TYPOGRAPHY
+   Version : 1.0
+=========================================================== */
+
+/* ===========================
+   BODY
+=========================== */
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--text-md);
+    font-weight: var(--fw-regular);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* ===========================
+   HEADINGS
+=========================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    font-weight: var(--fw-semibold);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+/* ===========================
+   HEADING SCALE
+=========================== */
+
+h1 {
+    font-size: var(--text-5xl);
+}
+
+h2 {
+    font-size: var(--text-4xl);
+}
+
+h3 {
+    font-size: var(--text-3xl);
+}
+
+h4 {
+    font-size: var(--text-2xl);
+}
+
+h5 {
+    font-size: var(--text-xl);
+}
+
+h6 {
+    font-size: var(--text-lg);
+}
+
+/* ===========================
+   PARAGRAPHS
+=========================== */
+
+p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-4);
+}
+
+/* ===========================
+   LINKS
+=========================== */
+
+a {
+    color: inherit;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-primary);
+}
+
+/* ===========================
+   CODE
+=========================== */
+
+code,
+pre {
+    font-family: var(--font-code);
+}
+
+/* ===========================
+   SMALL TEXT
+=========================== */
+
+small {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+}
+
+/* ===========================
+   TEXT UTILITIES
+=========================== */
+
+.text-primary {
+    color: var(--text-primary);
+}
+
+.text-secondary {
+    color: var(--text-secondary);
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-gradient {
+
+    background: linear-gradient(
+        90deg,
+        var(--color-primary),
+        var(--color-secondary)
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ===========================
+   AI RESPONSE
+=========================== */
+
+.ai-text {
+
+    font-family: var(--font-body);
+
+    color: var(--text-primary);
+
+    line-height: 1.8;
+}
+
+/* ===========================
+   LABELS
+=========================== */
+
+.label {
+
+    display: inline-block;
+
+    font-size: var(--text-sm);
+
+    font-weight: var(--fw-medium);
+
+    color: var(--text-muted);
+
+    letter-spacing: .08em;
+
+    text-transform: uppercase;
+}
+
+/* ===========================
+   SELECTION
+=========================== */
+
+::selection {
+
+    background: var(--color-primary);
+
+    color: white;
+}

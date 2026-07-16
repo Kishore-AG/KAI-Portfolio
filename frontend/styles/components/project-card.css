@@ -1,0 +1,319 @@
+/* ==========================================================
+   KAI OS
+   PROJECT CARD
+   Version : 1.0
+========================================================== */
+
+
+/* ==========================================================
+   BASE CARD
+========================================================== */
+
+.project-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+    border-radius:var(--radius-lg);
+
+    border:1px solid var(--glass-border);
+
+    background:var(--glass-bg);
+
+    backdrop-filter:blur(20px);
+
+    transition:all .35s ease;
+
+    position:relative;
+
+}
+
+
+/* ==========================================================
+   HOVER
+========================================================== */
+
+.project-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:rgba(59,130,246,.35);
+
+    box-shadow:
+
+        0 18px 40px rgba(0,0,0,.35),
+
+        0 0 25px rgba(59,130,246,.18);
+
+}
+
+
+/* ==========================================================
+   IMAGE
+========================================================== */
+
+.project-image{
+
+    width:100%;
+
+    height:240px;
+
+    overflow:hidden;
+
+    background:#111827;
+
+}
+
+
+/* ==========================================================
+   IMAGE PLACEHOLDER
+========================================================== */
+
+.image-placeholder{
+
+    width:100%;
+
+    height:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:var(--text-muted);
+
+    font-size:var(--text-lg);
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(59,130,246,.15),
+            rgba(139,92,246,.15)
+        );
+
+}
+
+.project-content{
+
+    padding:1.5rem;
+
+}
+
+/* ==========================================================
+   PROJECT CONTENT
+========================================================== */
+
+.project-content{
+
+    padding:1.5rem;
+
+}
+
+
+/* ==========================================================
+   CATEGORY
+========================================================== */
+
+.project-category{
+
+    margin-bottom:1rem;
+
+}
+
+
+/* ==========================================================
+   TITLE
+========================================================== */
+
+.project-title{
+
+    margin-bottom:.75rem;
+
+    font-size:2rem;
+
+    line-height:1.2;
+
+}
+
+
+/* ==========================================================
+   DESCRIPTION
+========================================================== */
+
+.project-description{
+
+    color:var(--text-secondary);
+
+    line-height:1.7;
+
+    margin-bottom:1.25rem;
+
+}
+
+
+/* ==========================================================
+   TECHNOLOGIES
+========================================================== */
+
+.project-tech{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:.6rem;
+
+    margin-bottom:1.5rem;
+
+}
+
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+.project-footer{
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    padding-top:1.2rem;
+
+}
+
+
+/* ==========================================================
+   STATUS
+========================================================== */
+
+.project-status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.6rem;
+
+    margin-bottom:1.2rem;
+
+    color:var(--text-secondary);
+
+}
+
+
+/* ==========================================================
+   STATUS DOT
+========================================================== */
+
+.status-dot{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#22c55e;
+
+    box-shadow:0 0 10px #22c55e;
+
+}
+
+
+/* ==========================================================
+   BUTTON GROUP
+========================================================== */
+
+.project-actions{
+
+    display:flex;
+
+    gap:1rem;
+
+}
+
+/* ==========================================================
+   FEATURED PROJECT
+========================================================== */
+
+.featured-project-card{
+
+    display:grid;
+
+    grid-template-columns:420px 1fr;
+
+    align-items:stretch;
+
+}
+
+
+/* ==========================================================
+   FEATURED IMAGE
+========================================================== */
+
+.featured-project-card .project-image{
+
+    height:100%;
+
+    min-height:420px;
+
+}
+
+
+/* ==========================================================
+   FEATURED CONTENT
+========================================================== */
+
+.featured-project-card .project-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    padding:3rem;
+
+}
+
+
+/* ==========================================================
+   FEATURED TITLE
+========================================================== */
+
+.featured-project-card .project-title{
+
+    font-size:3rem;
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:992px){
+
+    .featured-project-card{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .featured-project-card .project-image{
+
+        min-height:260px;
+
+    }
+
+    .featured-project-card .project-title{
+
+        font-size:2.2rem;
+
+    }
+
+}

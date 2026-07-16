@@ -1,0 +1,63 @@
+```gitignore
+# ==========================
+# Python
+# ==========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# Environment Variables
+.env
+
+# SQLite Database
+*.db
+*.sqlite3
+
+# Uploads (keep folder, ignore files)
+backend/uploads/avatar/*
+backend/uploads/projects/*
+backend/uploads/resume/*
+
+!backend/uploads/avatar/.gitkeep
+!backend/uploads/projects/.gitkeep
+!backend/uploads/resume/.gitkeep
+
+# Logs
+*.log
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Pytest
+.pytest_cache/
+
+# MyPy
+.mypy_cache/
+
+# Ruff
+.ruff_cache/
+
+# Coverage
+.coverage
+htmlcov/
+
+# Build
+dist/
+build/
+
+# Node (if added later)
+node_modules/
+```

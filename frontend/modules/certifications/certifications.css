@@ -1,0 +1,169 @@
+/*==================================================
+CERTIFICATIONS SECTION
+==================================================*/
+
+.certifications-section{
+
+    padding:0rem 0;
+
+}
+
+/*==================================================
+GRID
+==================================================*/
+
+.certifications-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:2rem;
+
+}
+
+@media(max-width:992px){
+
+    .certifications-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .certifications-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/*==================================================
+CERTIFICATE CARD
+==================================================*/
+
+.certificate-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    height:100%;
+
+    background:var(--glass-bg);
+
+    border:1px solid var(--glass-border);
+
+    border-radius:var(--radius-lg);
+
+    backdrop-filter:blur(20px);
+
+    padding:2rem;
+
+    transition:.3s ease;
+
+}
+
+.certificate-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:rgba(59,130,246,.35);
+
+    box-shadow:0 15px 35px rgba(59,130,246,.15);
+
+}
+
+/*==================================================
+ICON
+==================================================*/
+
+.certificate-icon{
+
+    width:60px;
+
+    height:60px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:rgba(59,130,246,.12);
+
+    font-size:1.8rem;
+
+    margin-bottom:1.5rem;
+
+}
+
+/*==================================================
+TEXT
+==================================================*/
+
+.certificate-provider{
+
+    color:var(--color-primary);
+
+    font-size:.9rem;
+
+    font-weight:600;
+
+}
+
+.certificate-title{
+
+    margin:.75rem 0;
+
+}
+
+.certificate-date{
+
+    color:var(--text-secondary);
+
+    margin-bottom:1rem;
+
+}
+
+/*==================================================
+BADGE
+==================================================*/
+
+.certificate-badge{
+
+    display:inline-block;
+
+    padding:.4rem .8rem;
+
+    border-radius:999px;
+
+    background:rgba(34,197,94,.12);
+
+    color:#22c55e;
+
+    border:1px solid rgba(34,197,94,.25);
+
+    font-size:.85rem;
+
+    font-weight:600;
+
+    margin-bottom:1.5rem;
+
+}
+
+/*==================================================
+BUTTON
+==================================================*/
+
+.certificate-actions{
+
+    margin-top:auto;
+
+}
