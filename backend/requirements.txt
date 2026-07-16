@@ -7,3 +7,4 @@ python-multipart
 python-dotenv
 pydantic
 psycopg[binary]
+psycopg2
