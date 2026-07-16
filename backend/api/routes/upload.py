@@ -40,7 +40,7 @@ async def upload_avatar(
 
         "avatar":
 
-        f"http://127.0.0.1:8000/uploads/avatar/{filename}"
+        f"https://kai-portfolio-4kbr.onrender.com/uploads/avatar/{filename}"
 
     }
 
@@ -76,6 +76,6 @@ async def upload_project_image(
 
         "image":
 
-        f"http://127.0.0.1:8000/uploads/projects/{filename}"
+        f"https://kai-portfolio-4kbr.onrender.com/uploads/projects/{filename}"
 
     }

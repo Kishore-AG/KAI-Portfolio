@@ -1,6 +1,6 @@
 import { handleAction } from "./actions.js";
 
-const API_URL = "http://127.0.0.1:8000/kai/chat";
+const API_URL = "https://kai-portfolio-4kbr.onrender.com/kai/chat";
 
 let chatContainer;
 let inputBox;

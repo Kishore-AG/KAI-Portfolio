@@ -1,4 +1,4 @@
-const API_URL = "https://kai-portfolio-4kbr.onrender.com/"
+const API_URL = "https://kai-portfolio-4kbr.onrender.com/auth/login"
 
 export async function login(username, password) {
 
