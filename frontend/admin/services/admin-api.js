@@ -1,6 +1,6 @@
 import { getToken } from "./auth.js";
 
-const API_BASE_URL = "https://kai-portfolio-4kbr.onrender.com/";
+const API_BASE_URL = "https://kai-portfolio-4kbr.onrender.com";
 
 async function request(endpoint, options = {}) {
 
