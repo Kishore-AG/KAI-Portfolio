@@ -1,4 +1,4 @@
-export const API_BASE_URL = "http://127.0.0.1:8000";
+export const API_BASE_URL = "https://kai-portfolio-4kbr.onrender.com/";
 
 export async function apiRequest(endpoint, options = {}) {
 
