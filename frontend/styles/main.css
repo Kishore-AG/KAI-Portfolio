@@ -32,7 +32,7 @@
 
 @import url("./layout/grid.css");
 @import url("./layout/navbar.css");
-@import url("./layout/footer.css");
+@import url("./layout/dashboard.css");
 
 
 /* ===========================================================
@@ -41,39 +41,17 @@
 
 @import url("./components/buttons.css");
 @import url("./components/glass-card.css");
-@import url("./components/cards.css");
-@import url("./components/modal.css");
-@import url("./components/forms.css");
-@import url("./components/timeline.css");
-@import url("./components/ai-chat.css");
-@import url("./components/loading.css");
+@import url("./components/chips.css");
+@import url("./components/inputs.css");
+@import url("./components/project-card.css");
 
-
-
-
-
-/* ===========================================================
-   THEMES
-=========================================================== */
-
-@import url("./themes/dark.css");
-@import url("./themes/responsive.css");
-
-
-/* ===========================================================
-   ANIMATIONS
-=========================================================== */
-
-@import url("./animations/animations.css");
-@import url("./animations/gsap.css");
 
 /* ===========================================================*/
 @import url("./../modules/home/home.css");
 @import url("../modules/home/command-center.css");
-@import url("./components/chips.css");
-@import url("./components/inputs.css");
+
 @import url("../modules/projects/projects.css");
-@import url("./components/project-card.css");
+
 @import url("../modules/research/research.css");
 @import url("../modules/skills/skill.css");
 @import url("../modules/education/education.css");
