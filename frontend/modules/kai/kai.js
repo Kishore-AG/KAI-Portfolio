@@ -25,8 +25,6 @@ function initializeKAI() {
     }
 
     welcomeMessage();
-    inputBox.focus();
-
     sendButton.addEventListener("click", sendMessage);
 
     inputBox.addEventListener("keydown", event => {
@@ -219,6 +217,8 @@ function setLoading(isLoading) {
 }
 
 export async function askKAIAbout(type, id, question="") {
+
+    document.dispatchEvent(new CustomEvent("kai:open"));
 
     document
         .getElementById("home")

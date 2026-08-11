@@ -51,6 +51,32 @@
     font-weight:600;
 }
 
+
+/* Header actions wrapper so status and close button sit together */
+.assistant-header-actions{
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+}
+
+/* Restyle the assistant close button to be more visible */
+.assistant-close{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(140,230,215,0.12);
+    color:var(--ink);
+    padding:6px 9px;
+    border-radius:8px;
+    font-size:.95rem;
+    line-height:1;
+    cursor:pointer;
+    transition:background .18s ease,transform .12s ease,box-shadow .12s ease;
+}
+
+.assistant-close:hover{
+    background:rgba(140,230,215,0.12);
+    color:#05201d;
+    transform:translateY(-1px);
+}
 .assistant-intro{
 
     display:flex;
