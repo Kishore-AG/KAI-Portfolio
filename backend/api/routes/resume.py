@@ -130,12 +130,8 @@ def download_resume(
             detail="Resume file is missing."
         )
 
-    download_url = get_resume_download_url(
-        resume.public_id
-    )
-
     return RedirectResponse(
-        url=download_url,
+        url=resume.file_path,
         status_code=302
     )
 
