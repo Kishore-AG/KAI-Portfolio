@@ -34,9 +34,7 @@ def upload_pdf(file, folder: str):
         folder=f"KAI-OS/{folder}",
         resource_type="raw",
         public_id="Kishore_resume.pdf",
-        overwrite=True,
-        invalidate=True,
-        filename_override="Kishore_resume.pdf"
+        overwrite=True
     )
 
     return {

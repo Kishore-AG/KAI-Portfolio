@@ -85,35 +85,16 @@ export async function uploadFile(endpoint, file) {
   });
 
   if (!response.ok) {
-    throw new Error("Upload failed");
+    const errorText = await response.text();
+
+    console.error("Upload server error:", errorText);
+
+    throw new Error(errorText);
   }
 
   return await response.json();
 }
 
-export async function downloadFile(endpoint) {
-  try {
-    const response = await fetch(API_URL + endpoint, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`Download failed: ${response.status}`);
-    }
-
-    const data = await response.json();
-
-    if (!data.download_url) {
-      throw new Error("Download URL not found.");
-    }
-
-    window.open(data.download_url, "_blank");
-  } catch (error) {
-    console.error("Resume download error:", error);
-
-    alert("Unable to download resume.");
-  }
+export function downloadFile(endpoint) {
+  window.open(API_BASE_URL + endpoint, "_blank");
 }
