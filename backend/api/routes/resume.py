@@ -14,6 +14,7 @@ from services.cloudinary_service import (
     upload_pdf,
     delete_raw_file,
 )
+from fastapi.responses import RedirectResponse
 
 router = APIRouter(
     prefix="/resume",
@@ -128,10 +129,10 @@ def download_resume(
             detail="Resume file is missing."
         )
 
-    # Return Cloudinary URL
-    return {
-        "download_url": resume.file_path
-    }
+    return RedirectResponse(
+        url=resume.file_path,
+        status_code=302
+    )
 
 
 @router.delete("/")

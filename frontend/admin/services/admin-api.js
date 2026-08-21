@@ -3,128 +3,117 @@ import { getToken } from "./auth.js";
 const API_BASE_URL = "https://kai-portfolio-4kbr.onrender.com";
 
 async function request(endpoint, options = {}) {
+  const token = getToken();
 
-    const token = getToken();
+  const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+      ...(options.headers || {}),
+    },
+    ...options,
+  });
 
-    const response = await fetch(
-        `${API_BASE_URL}${endpoint}`,
-        {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`,
-                ...(options.headers || {})
-            },
-            ...options
-        }
-    );
+  if (!response.ok) {
+    const error = await response.text();
 
-    if (!response.ok) {
+    throw new Error(error);
+  }
 
-        const error = await response.text();
-
-        throw new Error(error);
-
-    }
-
-    return response;
+  return response;
 }
 
 export async function get(endpoint) {
+  const response = await request(endpoint);
 
-    const response = await request(endpoint);
-
-    return await response.json();
-
+  return await response.json();
 }
 
 export async function post(endpoint, data) {
+  const response = await request(endpoint, {
+    method: "POST",
 
-    const response = await request(endpoint, {
+    body: JSON.stringify(data),
+  });
 
-        method: "POST",
-
-        body: JSON.stringify(data)
-
-    });
-
-    return await response.json();
-
+  return await response.json();
 }
 
 export async function put(endpoint, data) {
+  const response = await request(endpoint, {
+    method: "PUT",
 
-    const response = await request(endpoint, {
+    body: JSON.stringify(data),
+  });
 
-        method: "PUT",
-
-        body: JSON.stringify(data)
-
-    });
-
-    return await response.json();
-
+  return await response.json();
 }
 
 export async function remove(endpoint) {
+  const response = await request(endpoint, {
+    method: "DELETE",
+  });
 
-    const response = await request(endpoint, {
-
-        method: "DELETE"
-
-    });
-
-    return await response.json();
-
+  return await response.json();
 }
 
 export async function update(endpoint, data) {
+  const response = await request(endpoint, {
+    method: "PUT",
 
-    const response = await request(endpoint, {
+    body: JSON.stringify(data),
+  });
 
-        method: "PUT",
-
-        body: JSON.stringify(data)
-
-    });
-
-    return await response.json();
-
+  return await response.json();
 }
 
 export async function uploadFile(endpoint, file) {
+  const token = getToken();
 
-    const token = getToken();
+  const formData = new FormData();
 
-    const formData = new FormData();
+  formData.append("file", file);
 
-    formData.append("file", file);
+  const response = await fetch(API_BASE_URL + endpoint, {
+    method: "POST",
 
-    const response = await fetch(API_BASE_URL + endpoint, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
 
-        method: "POST",
+    body: formData,
+  });
 
-        headers: {
+  if (!response.ok) {
+    throw new Error("Upload failed");
+  }
 
-            Authorization: `Bearer ${token}`
+  return await response.json();
+}
 
-        },
-
-        body: formData
-
+export async function downloadFile(endpoint) {
+  try {
+    const response = await fetch(API_URL + endpoint, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
     });
 
     if (!response.ok) {
-
-        throw new Error("Upload failed");
-
+      throw new Error(`Download failed: ${response.status}`);
     }
 
-    return await response.json();
+    const data = await response.json();
 
-}
+    if (!data.download_url) {
+      throw new Error("Download URL not found.");
+    }
 
-export function downloadFile(endpoint) {
+    window.open(data.download_url, "_blank");
+  } catch (error) {
+    console.error("Resume download error:", error);
 
-    window.open(API_URL + endpoint, "_blank");
-
+    alert("Unable to download resume.");
+  }
 }
