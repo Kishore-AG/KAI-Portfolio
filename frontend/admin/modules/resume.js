@@ -31,29 +31,37 @@ export async function loadResumeModule() {
     // Upload Resume
     // ==========================
 
-    document
-        .getElementById("upload-resume")
-        .addEventListener("click", uploadResume);
+    const uploadButton =
+    document.getElementById("upload-resume");
+
+if (uploadButton) {
+    uploadButton.addEventListener(
+        "click",
+        uploadResume
+    );
+}
 
     // ==========================
     // Download Resume
     // ==========================
 
-    document
-        .getElementById("download-resume")
-        .addEventListener("click", () => {
+    const downloadButton = document.getElementById("download-resume");
 
-            downloadFile("/resume/download");
-
-        });
+    if (downloadButton) {
+      downloadButton.addEventListener("click", () => {
+        downloadFile("/resume/download");
+      });
+    }
 
     // ==========================
     // Delete Resume
     // ==========================
 
-    document
-        .getElementById("delete-resume")
-        .addEventListener("click", deleteResume);
+    const deleteButton = document.getElementById("delete-resume");
+
+    if (deleteButton) {
+      deleteButton.addEventListener("click", deleteResume);
+    }
 
 }
 
