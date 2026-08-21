@@ -129,8 +129,13 @@ def download_resume(
             detail="Resume file is missing."
         )
 
+    download_url = resume.file_path.replace(
+        "/raw/upload/",
+        "/raw/upload/fl_attachment:Kishore_resume.pdf/"
+    )
+
     return RedirectResponse(
-        url=resume.file_path,
+        url=download_url,
         status_code=302
     )
 
