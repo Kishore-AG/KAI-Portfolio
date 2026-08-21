@@ -29,17 +29,18 @@ def upload_image(file, folder: str):
 
 def upload_pdf(file, folder: str):
 
-    print("===== RESUME CLOUDINARY UPLOAD =====")
-    print("Filename:", file.filename)
-    print("Content type:", file.content_type)
-
     result = cloudinary.uploader.upload(
         file.file,
         folder=f"KAI-OS/{folder}",
-        resource_type="raw",
-        public_id="Kishore_resume.pdf",
-        overwrite=True
+        resource_type="raw"
     )
+
+    return {
+        "url": result["secure_url"],
+        "public_id": result["public_id"],
+        "resource_type": result["resource_type"],
+        "asset_folder": result.get("asset_folder"),
+    }
 
     print("CLOUDINARY RESULT:", result)
 
