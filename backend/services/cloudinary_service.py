@@ -3,6 +3,7 @@ import cloudinary.uploader
 
 from core.config import settings
 
+
 cloudinary.config(
     cloud_name=settings.CLOUDINARY_CLOUD_NAME,
     api_key=settings.CLOUDINARY_API_KEY,
@@ -19,7 +20,10 @@ def upload_image(file, folder: str):
         resource_type="image"
     )
 
-    return result["secure_url"]
+    return {
+        "url": result["secure_url"],
+        "public_id": result["public_id"]
+    }
 
 
 def upload_pdf(file, folder: str):
@@ -30,4 +34,15 @@ def upload_pdf(file, folder: str):
         resource_type="raw"
     )
 
-    return result["secure_url"]
+    return {
+        "url": result["secure_url"],
+        "public_id": result["public_id"]
+    }
+
+
+def delete_raw_file(public_id: str):
+
+    return cloudinary.uploader.destroy(
+        public_id,
+        resource_type="raw"
+    )

@@ -2,6 +2,7 @@ from fastapi import APIRouter, UploadFile, File
 
 from services.cloudinary_service import (
     upload_image,
+    upload_pdf,
 )
 
 router = APIRouter(
@@ -36,4 +37,24 @@ async def upload_project_image(
 
     return {
         "image": image_url
+    }
+
+@router.post("/resume")
+async def upload_resume(
+    file: UploadFile = File(...)
+):
+
+    if file.content_type != "application/pdf":
+        return {
+            "error": "Only PDF files are allowed."
+        }
+
+    pdf = upload_pdf(
+        file,
+        "resumes"
+    )
+
+    return {
+        "resume": pdf["url"],
+        "public_id": pdf["public_id"]
     }

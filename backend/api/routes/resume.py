@@ -1,7 +1,3 @@
-import os
-import shutil
-from pathlib import Path
-
 from fastapi import (
     APIRouter,
     Depends,
@@ -9,24 +5,20 @@ from fastapi import (
     HTTPException,
     UploadFile,
 )
-from fastapi.responses import FileResponse
 from sqlalchemy.orm import Session
 
 from core.security import get_current_admin
 from database.session import get_db
 from repositories.resume_repository import ResumeRepository
+from services.cloudinary_service import (
+    upload_pdf,
+    delete_raw_file,
+)
 
 router = APIRouter(
     prefix="/resume",
     tags=["Resume"]
 )
-
-# Upload directory
-UPLOAD_DIR = Path("uploads/resume")
-UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
-
-# Fixed filename (only one active resume)
-RESUME_FILENAME = "resume.pdf"
 
 
 @router.post("/upload")
@@ -35,35 +27,48 @@ def upload_resume(
     db: Session = Depends(get_db),
     admin=Depends(get_current_admin)
 ):
-    # Accept only PDF files
+    # Only PDF files
     if file.content_type != "application/pdf":
         raise HTTPException(
             status_code=400,
             detail="Only PDF files are allowed."
         )
 
-    file_path = UPLOAD_DIR / RESUME_FILENAME
+    # Upload PDF to Cloudinary
+    cloudinary_file = upload_pdf(
+        file,
+        "resume"
+    )
 
-    # Delete old resume if it exists
-    if file_path.exists():
-        os.remove(file_path)
+    file_url = cloudinary_file["url"]
+    public_id = cloudinary_file["public_id"]
 
-    # Save uploaded file
-    with open(file_path, "wb") as buffer:
-        shutil.copyfileobj(file.file, buffer)
-
-    file_size = file_path.stat().st_size
+    # Determine file size
+    file.file.seek(0, 2)
+    file_size = file.file.tell()
+    file.file.seek(0)
 
     resume_data = {
-        "file_name": RESUME_FILENAME,
-        "file_path": str(file_path),
+        "file_name": file.filename or "resume.pdf",
+        "file_path": file_url,
         "file_size": file_size,
-        "version": "1.0"
+        "version": "1.0",
+        "public_id": public_id,
     }
 
     existing_resume = ResumeRepository.get_resume(db)
 
     if existing_resume:
+
+        # Delete previous PDF from Cloudinary
+        old_public_id = existing_resume.public_id
+
+        if old_public_id:
+            try:
+                delete_raw_file(old_public_id)
+            except Exception:
+                pass
+
         ResumeRepository.update(
             db,
             existing_resume,
@@ -72,8 +77,9 @@ def upload_resume(
 
         return {
             "message": "Resume updated successfully.",
-            "file_name": RESUME_FILENAME,
-            "file_size": file_size
+            "file_name": resume_data["file_name"],
+            "file_size": file_size,
+            "file_url": file_url,
         }
 
     ResumeRepository.create(
@@ -83,13 +89,16 @@ def upload_resume(
 
     return {
         "message": "Resume uploaded successfully.",
-        "file_name": RESUME_FILENAME,
-        "file_size": file_size
+        "file_name": resume_data["file_name"],
+        "file_size": file_size,
+        "file_url": file_url,
     }
 
 
 @router.get("/")
-def get_resume(db: Session = Depends(get_db)):
+def get_resume(
+    db: Session = Depends(get_db)
+):
     resume = ResumeRepository.get_resume(db)
 
     if not resume:
@@ -102,7 +111,9 @@ def get_resume(db: Session = Depends(get_db)):
 
 
 @router.get("/download")
-def download_resume(db: Session = Depends(get_db)):
+def download_resume(
+    db: Session = Depends(get_db)
+):
     resume = ResumeRepository.get_resume(db)
 
     if not resume:
@@ -111,19 +122,16 @@ def download_resume(db: Session = Depends(get_db)):
             detail="Resume not found."
         )
 
-    file_path = Path(resume.file_path)
-
-    if not file_path.exists():
+    if not resume.file_path:
         raise HTTPException(
             status_code=404,
             detail="Resume file is missing."
         )
 
-    return FileResponse(
-        path=file_path,
-        filename=resume.file_name,
-        media_type="application/pdf"
-    )
+    # Return Cloudinary URL
+    return {
+        "download_url": resume.file_path
+    }
 
 
 @router.delete("/")
@@ -139,10 +147,12 @@ def delete_resume(
             detail="Resume not found."
         )
 
-    file_path = Path(resume.file_path)
-
-    if file_path.exists():
-        os.remove(file_path)
+    # Delete from Cloudinary
+    if resume.public_id:
+        try:
+            delete_raw_file(resume.public_id)
+        except Exception:
+            pass
 
     ResumeRepository.delete(
         db,

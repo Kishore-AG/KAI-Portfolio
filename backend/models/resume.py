@@ -11,8 +11,10 @@ class Resume(Base, TimestampMixin):
 
     file_name = Column(String(255), nullable=False)
 
-    file_path = Column(String(255), nullable=False)
+    file_path = Column(String(500), nullable=False)
 
     file_size = Column(Integer, nullable=True)
 
     version = Column(String(50), nullable=True)
+
+    public_id = Column(String(500), nullable=True)
