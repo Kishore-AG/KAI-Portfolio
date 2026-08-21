@@ -60,10 +60,12 @@ def delete_raw_file(public_id: str):
 
 def get_resume_download_url(public_id: str):
 
-    return cloudinary.utils.cloudinary_url(
+    url, _ = cloudinary.utils.cloudinary_url(
         public_id,
         resource_type="raw",
         type="upload",
         secure=True,
-        flags=["attachment:Kishore_resume"]
-    )[0]
+        flags="attachment:Kishore_resume"
+    )
+
+    return url

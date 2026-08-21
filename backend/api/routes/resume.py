@@ -124,14 +124,18 @@ def download_resume(
             detail="Resume not found."
         )
 
-    if not resume.file_path:
+    if not resume.public_id:
         raise HTTPException(
             status_code=404,
             detail="Resume file is missing."
         )
 
+    download_url = get_resume_download_url(
+        resume.public_id
+    )
+
     return RedirectResponse(
-        url=resume.file_path,
+        url=download_url,
         status_code=302
     )
 
