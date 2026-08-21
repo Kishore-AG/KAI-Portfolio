@@ -1,5 +1,6 @@
 import cloudinary
 import cloudinary.uploader
+import cloudinary.utils
 
 from core.config import settings
 
@@ -31,9 +32,7 @@ def upload_pdf(file, folder: str):
     result = cloudinary.uploader.upload(
         file.file,
         folder=f"KAI-OS/{folder}",
-        resource_type="raw",
-        public_id="Kishore_resume.pdf",
-        overwrite=True
+        resource_type="raw"
     )
 
     return {
@@ -48,3 +47,14 @@ def delete_raw_file(public_id: str):
         public_id,
         resource_type="raw"
     )
+
+
+def get_resume_download_url(public_id: str):
+
+    return cloudinary.utils.cloudinary_url(
+        public_id,
+        resource_type="raw",
+        type="upload",
+        secure=True,
+        flags=["attachment:Kishore_resume"]
+    )[0]

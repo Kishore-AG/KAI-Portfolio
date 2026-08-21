@@ -13,6 +13,7 @@ from repositories.resume_repository import ResumeRepository
 from services.cloudinary_service import (
     upload_pdf,
     delete_raw_file,
+    get_resume_download_url,
 )
 from fastapi.responses import RedirectResponse
 
@@ -129,9 +130,8 @@ def download_resume(
             detail="Resume file is missing."
         )
 
-    download_url = resume.file_path.replace(
-        "/raw/upload/",
-        "/raw/upload/fl_attachment:Kishore_resume.pdf/"
+    download_url = get_resume_download_url(
+        resume.public_id
     )
 
     return RedirectResponse(
