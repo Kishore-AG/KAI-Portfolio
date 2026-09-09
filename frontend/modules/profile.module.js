@@ -65,6 +65,11 @@ if (
             emailLink.href = `mailto:${profile.email}`;
         }
 
+        const directEmail = document.getElementById("direct-email-btn");
+        if (directEmail && profile.email) {
+            directEmail.href = `mailto:${profile.email}`;
+        }
+
         const githubLink = document.getElementById("contact-github");
         if (githubLink && profile.github) {
             githubLink.href = profile.github;

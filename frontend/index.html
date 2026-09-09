@@ -5,472 +5,361 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Kishore A G | Portfolio</title>
-    <meta name="description" content="KAI OS - AI Powered Portfolio of Kishore specializing in Artificial Intelligence, Machine Learning, Explainable AI, Computer Vision and Full Stack Development.">
-    <meta name="keywords" content="AI Portfolio, Machine Learning, Computer Vision, Explainable AI, FastAPI, Full Stack Developer">
+    <meta name="description" content="KAI OS - Futuristic AI Portfolio of Kishore specializing in Artificial Intelligence, Machine Learning, Computer Vision, and Autonomous AI Systems.">
+    <meta name="keywords" content="AI Portfolio, Machine Learning, Computer Vision, Autonomous Agents, FastAPI, Three.js, Deep Learning">
     <meta name="author" content="Kishore">
-    <link rel="icon" href="assets/icons/favicon.ico">
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='28' fill='%23060d1a'/><text x='50%25' y='55%25' dominant-baseline='central' text-anchor='middle' font-family='system-ui,sans-serif' font-size='56' font-weight='900' fill='%2300f5d4'>K</text></svg>">
+
+    <!-- Google Fonts: Futuristic Luxury & High-Tech Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Design System Stylesheet -->
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
+    <!-- Three.js Cinematic 3D Background Canvas -->
     <canvas id="neural-field" aria-hidden="true"></canvas>
+
+    <!-- Atmospheric Depth & Radial Glow Layer -->
     <div class="atmosphere" aria-hidden="true"></div>
+
     <div id="app">
+        <!-- Floating Command Navigation Bar -->
         <header id="navbar" class="site-nav">
             <div class="header-left">
-                <a id="admin-entry" class="brand" aria-label="KAI OS home"><span class="brand-mark">K</span></a>
+                <a id="admin-entry" class="brand" aria-label="KAI OS Administrative Core">
+                    <span class="brand-mark">K</span>
+                    <div class="brand-title">
+                        <span>KAI</span>
+                        <span>Admin</span>
+                    </div>
+                </a>
             </div>
+
             <nav class="nav-links" aria-label="Primary navigation">
-                <a href="#projects">Work</a><a href="#research">Research</a><a href="#skills">Expertise</a><a href="#contact">Contact</a>
+                <a href="#projects">Work</a>
+                <a href="#research">Research</a>
+                <a href="#skills">Expertise</a>
+                <a href="#education">Education</a>
+                <a href="#certifications">Certificates</a>
+                <a href="#contact">Contact</a>
             </nav>
+
             <button id="ai-toggle" class="header-kai-toggle" type="button" role="switch" aria-checked="false" aria-controls="kai-panel">
-                <span class="joystick" aria-hidden="true"><span class="joystick-shaft"><i></i></span><span class="joystick-base"></span></span>
-                <span class="header-kai-copy"><b>KAI</b><span class="header-kai-state">OFF</span></span>
+                <span class="joystick" aria-hidden="true">
+                    <span class="joystick-base"></span>
+                    <span class="joystick-shaft"></span>
+                </span>
+                <span class="header-kai-copy">
+                    <b>KAI AGENT</b>
+                    <span class="header-kai-state">STANDBY</span>
+                </span>
             </button>
         </header>
 
         <main id="main-content">
-            <section id="home" class="dashboard hero-shell">
+            <!-- =================================================================
+                 HERO / PROFILE IDENTITY SECTION (About Me)
+                 ================================================================= -->
+            <section id="home" class="hero-shell">
+                <div class="container">
+                    <div class="profile-hero-wrapper">
+                        <!-- Holographic Identity Card -->
+                        <div class="glass-card profile-card" data-reveal>
+                            <div>
+                                <div class="identity-header">
+                                    <div class="avatar-container">
+                                        <div id="profile-avatar" class="avatar-placeholder">
+                                            <span>K</span>
+                                        </div>
+                                    </div>
+                                    <div class="identity-title-group">
+                                        <p class="identity-salutation">Hello, I am</p>
+                                        <h1 id="profile-name" class="identity-name">Kishore A G</h1>
+                                    </div>
+                                </div>
 
-    <div class="container">
+                                <ul id="profile-roles" class="identity-roles">
+                                    <li>AI Engineer</li>
+                                    <li>Machine Learning Researcher</li>
+                                    <li>Full-Stack Architect</li>
+                                </ul>
 
-        <div class="grid gap-3">
+                                <p id="profile-bio" class="identity-bio">
+                                    Connecting with the neural network... Loading profile data.
+                                </p>
 
-            <!-- Identity Panel -->
+                                <div class="identity-meta-row">
+                                    <p id="profile-location" class="identity-location"></p>
 
-            <section class="glass-card col-4 profile-card" data-reveal>
-
-              <div class="identity-panel">
-
-                <div id="profile-avatar" class="avatar-placeholder">
-
-                  <span>K</span>
-
-                </div>
-
-                <p class="identity-label">
-                  <b>Hello, I'm</b>
-
-                </p>
-
-                <h1 id="profile-name" class="identity-name">
-
-                </h1>
-
-                <ul id="profile-roles" class="identity-roles">
-
-                  <li></li>
-
-                  <li></li>
-
-                  <li></li>
-
-                </ul>
-
-                <p id="profile-bio" class="identity-bio">Requested to Use Personal network<br>
-                  <b>Loading...</b><br>
-                  Please wait while fetch my data. This can take up to 30 seconds.
-                </p>
-
-                <p id="profile-location" class="identity-location"></p>
-
-                <div id="profile-availability" class="availability">
-
-                  <span class="status-dot"></span>
-
-
-
-                </div>
-
-                <div class="identity-actions">
-
-                  <button id="download-resume-btn" class="btn btn-primary">
-                    Download Resume
-                  </button>
-
-                  <button id="contact-btn" class="btn btn-secondary">
-
-                    Contact Me
-
-                  </button>
-
-
-
-                </div>
-
-              </div>
-
-            </section>
-
-            <!-- KAI interface — retained IDs and API bindings -->
-
-            <section id="kai-panel" class="glass-card col-8 kai-panel" role="dialog" aria-modal="true" aria-label="KAI assistant" aria-hidden="true">
-
-                <div class="command-center">
-
-                    <!-- Header -->
-
-                    <div class="command-header">
-
-                        <div class="command-title">
-
-                            <h2>KAI Assistant</h2>
-
-                        </div>
-
-                        <div class="assistant-header-actions">
-                            <div class="assistant-status">
-                                <span class="status-dot"></span>
-                                <span>AI ONLINE</span>
+                                    <div id="profile-availability" class="availability">
+                                        <span class="status-dot"></span>
+                                        <span id="availability-text">Available for Opportunities</span>
+                                    </div>
+                                </div>
                             </div>
-                            <button class="assistant-close" type="button" aria-label="Close assistant">✕</button>
+
+                            <div class="identity-actions">
+                                <button id="download-resume-btn" class="btn btn-primary" type="button">
+                                    <i class="fa-solid fa-file-arrow-down"></i>
+                                    Download Resume
+                                </button>
+                                <button id="contact-btn" class="btn btn-secondary" type="button">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                    Get In Touch
+                                </button>
+                            </div>
                         </div>
-
                     </div>
-
-                    <!-- Welcome -->
-
-                    <div class="assistant-intro">
-
-                        <h3>Hello! I'm KAI.</h3>
-
-                        <p>
-
-                            Ask me anything about Kishore's portfolio.
-
-                        </p>
-
-                    </div>
-
-                    <!-- Capabilities -->
-
-                    <!-- Suggestions -->
-
-                    <div class="assistant-suggestions">
-
-                        <button class="chip" data-question="Tell me about yourself">
-    <span class="chip-icon">👤</span>
-    <span>Tell me about yourself</span>
-</button>
-
-<button class="chip" data-question="Tell me about your projects">
-    <span class="chip-icon">🚀</span>
-    <span>Tell me about your projects</span>
-</button>
-
-<button class="chip" data-question="Explain your research">
-    <span class="chip-icon">📚</span>
-    <span>Explain your research</span>
-</button>
-
-<button class="chip" data-question="What skills do you have?">
-    <span class="chip-icon">💻</span>
-    <span>What skills do you have?</span>
-</button>
-
-<button class="chip" data-question="Tell me about your education">
-    <span class="chip-icon">🎓</span>
-    <span>Tell me about your education</span>
-</button>
-
-<button class="chip" data-question="Tell me about your certifications">
-    <span class="chip-icon">🏆</span>
-    <span>Tell me about your certifications</span>
-</button>
-
-                    </div>
-
-                    <!-- Input -->
-
-                    <!-- Chat Messages -->
-
-<div class="kai-chat-wrapper">
-
-    <div id="kai-chat" class="kai-chat">
-
-    </div>
-
-</div>
-
-<!-- Input -->
-
-<div class="assistant-input">
-
-    <div class="input-group">
-
-        <input
-            id="kai-input"
-            type="text"
-            class="input-field"
-            placeholder="Ask KAI anything..."
-            autocomplete="off"
-        >
-
-        <button
-            id="kai-send"
-            class="btn btn-primary btn-icon"
-        >
-            ➜
-        </button>
-
-    </div>
-
-</div>
-
                 </div>
-
             </section>
 
-
-        </div>
-
-    </div>
-
-</section>
-
-            <!-- =========================================     PROJECTS SECTION========================================= -->
-
+            <!-- =================================================================
+                 PROJECTS SECTION
+                 ================================================================= -->
             <section id="projects" class="projects-section">
-
                 <div class="container">
-
-                    <div class="section-header">
-
-                        <span class="section-tag">Featured Projects</span>
-
-                        <h2 class="section-title">Projects</h2>
-
+                    <div class="section-header" data-reveal>
+                        <span class="section-tag">Featured Work</span>
+                        <h2 class="section-title">Engineered Projects</h2>
                         <p class="section-description">
-
-                            A collection of AI, Machine Learning,
-
-                            Computer Vision and Full Stack projects
-
-                            built to solve real-world problems.
-
+                            A curated selection of Artificial Intelligence, Machine Learning, Computer Vision, and full-stack solutions built to solve complex real-world challenges.
                         </p>
-
                     </div>
 
-                    <!-- Featured Project -->
+                    <!-- Spotlight Featured Project -->
+                    <div id="featured-project" class="featured-project" data-reveal></div>
 
-                    <div id="featured-project" class="featured-project"></div>
-
+                    <!-- Grid of Additional Projects -->
                     <div id="projects-grid" class="projects-grid"></div>
-
-
                 </div>
-
             </section>
 
+            <!-- =================================================================
+                 RESEARCH & PUBLICATIONS SECTION
+                 ================================================================= -->
             <section id="research" class="research-section">
-
-                <div class="section-header">
-
-                    <span class="section-subtitle">AI RESEARCH</span>
-
-                    <h2 class="section-title">Research & Publications</h2>
-
-                    <p class="section-description">
-
-                        Exploring Artificial Intelligence,
-
-                        Machine Learning and Computer Vision
-
-                        through practical experiments and research.
-
-                    </p>
-
-                </div>
-
-                <div id="research-grid" class="research-grid"></div>
-
-            </section>
-
-            <section id="skills" class="skills-section">
-
-                <div class="section-header">
-
-                    <span class="section-subtitle">AI SKILLS</span>
-
-                    <h2 class="section-title">Core Expertise</h2>
-
-                    <p class="section-description">
-
-                        A mix of AI, backend, frontend and tools used to build modern solutions.
-
-                    </p>
-
-                </div>
-
-                <div id="skills-grid" class="skills-grid"></div>
-
-            </section>
-
-            <!-- =========================================     EDUCATION========================================= -->
-
-            <section id="education" class="education-section">
-
                 <div class="container">
-
-                    <div class="section-header">
-
-                        <span class="section-subtitle">EDUCATION</span>
-
-                        <h2 class="section-title">Academic Background</h2>
-
+                    <div class="section-header" data-reveal>
+                        <span class="section-tag">Investigation & Papers</span>
+                        <h2 class="section-title">Research & Publications</h2>
                         <p class="section-description">
-
-                            My educational journey in Artificial Intelligence
-
-                            and Machine Learning.
-
+                            Advancing knowledge in Artificial Intelligence, Explainable AI (XAI), and Deep Learning through empirical research and reproducible experiments.
                         </p>
+                    </div>
 
+                    <div id="research-grid" class="research-grid"></div>
+                </div>
+            </section>
+
+            <!-- =================================================================
+                 CORE EXPERTISE / SKILLS SECTION
+                 ================================================================= -->
+            <section id="skills" class="skills-section">
+                <div class="container">
+                    <div class="section-header" data-reveal>
+                        <span class="section-tag">Capabilities</span>
+                        <h2 class="section-title">Core Expertise</h2>
+                        <p class="section-description">
+                            A comprehensive technical arsenal spanning Artificial Intelligence, Cloud Architectures, Backend Systems, and Modern Frontend Engineering.
+                        </p>
+                    </div>
+
+                    <div id="skills-grid" class="skills-grid"></div>
+                </div>
+            </section>
+
+            <!-- =================================================================
+                 EDUCATION SECTION
+                 ================================================================= -->
+            <section id="education" class="education-section">
+                <div class="container">
+                    <div class="section-header" data-reveal>
+                        <span class="section-tag">Academics</span>
+                        <h2 class="section-title">Academic Background</h2>
+                        <p class="section-description">
+                            Rigorous academic foundations in Computer Science, Artificial Intelligence, and Mathematical Modeling.
+                        </p>
                     </div>
 
                     <div id="education-grid"></div>
-
                 </div>
-
             </section>
 
-            <!-- =========================================     CERTIFICATIONS========================================= -->
-
+            <!-- =================================================================
+                 CERTIFICATIONS SECTION
+                 ================================================================= -->
             <section id="certifications" class="certifications-section">
-
                 <div class="container">
-
-                    <div class="section-header">
-
-                        <span class="section-subtitle">CERTIFICATIONS</span>
-
+                    <div class="section-header" data-reveal>
+                        <span class="section-tag">Credentials</span>
                         <h2 class="section-title">Professional Certifications</h2>
-
                         <p class="section-description">
-
-                            Industry certifications and achievements
-
-                            that strengthen my AI and software development journey.
-
+                            Industry-validated certifications and continuous technical mastery in Machine Learning and Software Engineering.
                         </p>
-
                     </div>
 
                     <div id="certifications-grid" class="certifications-grid"></div>
-
                 </div>
-
             </section>
 
-            <!--=========================================CONTACT==========================================-->
-
+            <!-- =================================================================
+                 CONTACT SECTION
+                 ================================================================= -->
             <section id="contact" class="contact-section">
-
                 <div class="container">
-
-                    <div class="section-header">
-
-                        <span class="section-subtitle">CONTACT</span>
-
+                    <div class="section-header" data-reveal>
+                        <span class="section-tag">Connect</span>
                         <h2 class="section-title">Let's Build Something Amazing</h2>
-
                         <p class="section-description">
-
-                            Interested in AI, Machine Learning,
-
-                            Computer Vision or Full Stack Development?
-
-                            Let's connect.
-
+                            Interested in collaboration, AI system engineering, research discussion, or discussing opportunities? Reach out directly.
                         </p>
-
                     </div>
 
-                    <div class="contact-grid">
+                    <div class="contact-wrapper">
+                        <div class="contact-card" data-reveal>
+                            <h3 class="contact-card-title">Communication Portals</h3>
+                            <p class="contact-card-description">
+                                Whether you want to build cutting-edge AI systems, explore collaborative research, or discuss engineering roles, my channels are always open.
+                            </p>
 
-                        <div class="contact-info">
+                            <div class="social-links">
+                                <a id="contact-email" href="#" class="social-icon" aria-label="Send Email">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <span>Email</span>
+                                </a>
+                                <a id="contact-github" href="#" target="_blank" class="social-icon" aria-label="GitHub Profile">
+                                    <i class="fa-brands fa-github"></i>
+                                    <span>GitHub</span>
+                                </a>
+                                <a id="contact-linkedin" href="#" target="_blank" class="social-icon" aria-label="LinkedIn Profile">
+                                    <i class="fa-brands fa-linkedin-in"></i>
+                                    <span>LinkedIn</span>
+                                </a>
+                            </div>
 
-                            <article class="contact-card">
-
-                                <h3 class="contact-card-title">Contact Information</h3>
-
-                                <p class="contact-card-description">
-
-                                    Interested in AI, Machine Learning,
-
-                                    Full Stack Development or collaboration?
-
-                                    Let's connect.
-
-                                </p>
-
-                                <div class="social-links">
-
-                                    <a id="contact-email" href="#" class="social-icon" aria-label="Email">
-
-                                        <i class="fa-solid fa-envelope"></i>
-
-                                    </a>
-
-                                    <a id="contact-github" href="#" target="_blank" class="social-icon" aria-label="GitHub">
-
-                                        <i class="fa-brands fa-github"></i>
-
-                                    </a>
-
-                                    <a id="contact-linkedin" href="#"  target="_blank" class="social-icon" aria-label="LinkedIn">
-
-                                        <i class="fa-brands fa-linkedin-in"></i>
-
-                                    </a>
-
-                                </div>
-
-                                <div class="availability">
-
-                                    <span class="status-dot"></span>
-
-                                    <span id="availability-text">Available</span>
-
-                                </div>
-
-                            </article>
-
+                            <div class="availability">
+                                <span class="status-dot"></span>
+                                <span>Status: Actively Exploring Strategic Opportunities</span>
+                            </div>
                         </div>
-
-                        <div class="contact-form-card"></div>
-
                     </div>
-
                 </div>
-
             </section>
-
-
         </main>
 
+        <!-- =================================================================
+             FOOTER
+             ================================================================= -->
         <footer class="footer">
             <div class="container">
                 <div class="footer-content">
-                    <div class="footer-divider"></div>
-                    <p class="footer-copy">
-                        © 2026 Kishore. All Rights Reserved.
-                    </p>
+                    <div class="footer-brand">
+                        <span>KISHORE A G</span>
+                    </div>
                     <p class="footer-tagline">
-                        Artificial Intelligence • Machine Learning • Full Stack Development
+                        Artificial Intelligence &bull; Machine Learning &bull; Full-Stack Architecture
+                    </p>
+                    <p class="footer-copy">
+                        &copy; 2026 Kishore. All Rights Reserved.
                     </p>
                 </div>
             </div>
         </footer>
-
-        <div id="assistant-root"></div>
     </div>
 
+    <!-- Backdrop Overlay for KAI Assistant -->
+    <div id="kai-backdrop" class="kai-backdrop" aria-hidden="true"></div>
+
+    <!-- =================================================================
+         KAI AI ASSISTANT MODAL (Command Center)
+         ================================================================= -->
+    <section id="kai-panel" class="kai-panel" role="dialog" aria-modal="true" aria-label="KAI Intelligent Assistant" aria-hidden="true">
+        <div class="command-center">
+            <!-- Modal Header -->
+            <div class="command-header">
+                <div class="command-title">
+                    <h2>KAI Assistant</h2>
+                </div>
+                <div class="assistant-header-actions">
+                    <div class="assistant-status">
+                        <span class="status-dot"></span>
+                        <span>AI ONLINE</span>
+                    </div>
+                    <button class="assistant-close" type="button" aria-label="Close assistant">✕</button>
+                </div>
+            </div>
+
+            <!-- Welcome Note -->
+            <div class="assistant-intro">
+                <h3>Hello! I'm KAI.</h3>
+                <p>Ask me anything about Kishore's portfolio, research papers, technologies, or background.</p>
+            </div>
+
+            <!-- Suggestions / Chips -->
+            <div class="assistant-suggestions">
+                <button class="chip" data-question="Tell me about yourself" type="button">
+                    <span class="chip-icon">👤</span>
+                    <span>Tell me about yourself</span>
+                </button>
+                <button class="chip" data-question="Tell me about your projects" type="button">
+                    <span class="chip-icon">🚀</span>
+                    <span>Tell me about your projects</span>
+                </button>
+                <button class="chip" data-question="Explain your research" type="button">
+                    <span class="chip-icon">📚</span>
+                    <span>Explain your research</span>
+                </button>
+                <button class="chip" data-question="What skills do you have?" type="button">
+                    <span class="chip-icon">💻</span>
+                    <span>What skills do you have?</span>
+                </button>
+                <button class="chip" data-question="Tell me about your education" type="button">
+                    <span class="chip-icon">🎓</span>
+                    <span>Tell me about your education</span>
+                </button>
+                <button class="chip" data-question="Tell me about your certifications" type="button">
+                    <span class="chip-icon">🏆</span>
+                    <span>Tell me about your certifications</span>
+                </button>
+            </div>
+
+            <!-- Chat History Feed -->
+            <div class="kai-chat-wrapper">
+                <div id="kai-chat" class="kai-chat"></div>
+            </div>
+
+            <!-- Input Field -->
+            <div class="assistant-input">
+                <div class="input-group">
+                    <input
+                        id="kai-input"
+                        type="text"
+                        class="input-field"
+                        placeholder="Ask KAI anything..."
+                        autocomplete="off"
+                    >
+                    <button
+                        id="kai-send"
+                        class="btn btn-primary btn-icon"
+                        type="button"
+                        aria-label="Send message to KAI"
+                    >
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Application Scripts -->
     <script type="module" src="./js/main.js"></script>
     <script type="module" src="./modules/kai/kai.js"></script>
     <script type="module" src="./js/experience.js"></script>
-    <script>
-    </script>
 </body>
 </html>
