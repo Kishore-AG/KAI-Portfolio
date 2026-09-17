@@ -49,6 +49,10 @@ def send_contact_message(
         with urllib.request.urlopen(req) as response:
             if response.status not in (200, 201):
                 raise HTTPException(status_code=502, detail="Email could not be delivered")
+    except urllib.error.HTTPError as e:
+        error_body = e.read().decode('utf-8')
+        logger.error(f"Resend API HTTPError 403/4xx: {error_body}")
+        raise HTTPException(status_code=502, detail="Email could not be delivered (Check Render Logs for Resend Error)")
     except Exception as e:
         logger.exception("Contact email delivery failed")
         raise HTTPException(status_code=502, detail="Email could not be delivered")
