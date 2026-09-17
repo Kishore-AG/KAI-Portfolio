@@ -42,7 +42,8 @@ def send_contact_message(
     
     req = urllib.request.Request(url, data=data, headers={
         "Authorization": f"Bearer {settings.RESEND_API_KEY}",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) KAI-Portfolio/1.0"
     })
 
     try:
