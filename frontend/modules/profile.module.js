@@ -2,110 +2,131 @@ import { getProfile } from "../services/profile.service.js";
 import { state } from "../js/state.js";
 
 export async function loadProfile() {
+  try {
+    const profile = await getProfile();
+    state.profile = profile;
 
-    try {
+    // ── About section ─────────────────────────────────────────────────────
+    const aboutAvatar = document.getElementById("about-avatar");
+    if (aboutAvatar) {
+      if (
+        profile.avatar &&
+        profile.avatar !== "string" &&
+        profile.avatar.trim() !== ""
+      ) {
+        aboutAvatar.innerHTML = `<img src="${profile.avatar}" alt="${profile.name}" loading="lazy">`;
+      } else {
+        aboutAvatar.innerHTML = `<span>${profile.name.charAt(0)}</span>`;
+      }
+    }
 
-        const profile = await getProfile();
+    const aboutBio = document.getElementById("about-bio");
+    if (aboutBio && profile.bio) aboutBio.textContent = profile.bio;
 
-        state.profile = profile;
+    const aboutName = document.getElementById("about-name");
+    if (aboutName && profile.name) observeAboutName(aboutName, profile.name);
 
-        // Name
-        document.getElementById("profile-name").textContent =
-            profile.name;
+    const aboutLocation = document.getElementById("about-location");
+    if (aboutLocation && profile.location)
+      aboutLocation.textContent = profile.location;
 
-        // Availability
-        const availability =
-            document.getElementById("profile-availability");
+    const aboutStatus = document.getElementById("about-status");
+    if (aboutStatus) {
+      aboutStatus.textContent = profile.available
+        ? "Open to Opportunities"
+        : "Not Available";
+      if (!profile.available) {
+        aboutStatus.classList.remove("available");
+        aboutStatus.style.color = "var(--fg-muted)";
+      }
+    }
 
-        availability.innerHTML = `
-            <span class="status-dot"></span>
-            ${profile.available ? "Available for Opportunities" : "Currently Unavailable"}
-        `;
+    // ── Contact channels ──────────────────────────────────────────────────
+    const contactEmailLink = document.getElementById("contact-email");
+    const contactEmailVal = document.getElementById("contact-email-val");
+    if (contactEmailLink && profile.email) {
+      contactEmailLink.href = `mailto:${profile.email}`;
+      if (contactEmailVal) contactEmailVal.textContent = profile.email;
+    }
 
-        // Avatar
-const avatar = document.getElementById("profile-avatar");
+    const contactGithub = document.getElementById("contact-github");
+    if (contactGithub && profile.github) contactGithub.href = profile.github;
 
-if (
-    profile.avatar &&
-    profile.avatar !== "string" &&
-    profile.avatar.trim() !== ""
-) {
+    const contactLinkedin = document.getElementById("contact-linkedin");
+    if (contactLinkedin && profile.linkedin)
+      contactLinkedin.href = profile.linkedin;
 
-    avatar.innerHTML = `
-        <img src="${profile.avatar}" alt="${profile.name}">
-    `;
+    // ── Mobile social links ────────────────────────────────────────────────
+    const mobileGithub = document.getElementById("mobile-github");
+    if (mobileGithub && profile.github) mobileGithub.href = profile.github;
 
-} else {
+    const mobileLinkedin = document.getElementById("mobile-linkedin");
+    if (mobileLinkedin && profile.linkedin)
+      mobileLinkedin.href = profile.linkedin;
 
-    avatar.innerHTML = `
-        <span>${profile.name.charAt(0)}</span>
-    `;
+    const mobileEmail = document.getElementById("mobile-email");
+    if (mobileEmail && profile.email)
+      mobileEmail.href = `mailto:${profile.email}`;
 
+    // ── Availability status in contact ────────────────────────────────────
+    const contactAvailText = document.getElementById(
+      "contact-availability-text",
+    );
+    if (contactAvailText) {
+      contactAvailText.textContent = profile.available
+        ? "Actively Exploring Opportunities"
+        : "Not Currently Available";
+    }
+
+    const contactAvailDot = document.getElementById("contact-availability-dot");
+    if (contactAvailDot && !profile.available) {
+      contactAvailDot.style.backgroundColor = "var(--coral)";
+    }
+
+    console.log("✅ Profile Rendered");
+  } catch (err) {
+    console.error("Profile Error:", err);
+  }
 }
 
-        // Roles
-        const roles =
-            document.getElementById("profile-roles");
+function observeAboutName(element, name) {
+  if (!("IntersectionObserver" in window)) {
+    typeAboutName(element, name);
+    return;
+  }
 
-        roles.innerHTML = "";
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (!entries[0].isIntersecting) return;
+      observer.disconnect();
+      typeAboutName(element, name);
+    },
+    { threshold: 0.5 },
+  );
 
-        if (profile.title) {
+  observer.observe(element);
+}
 
-            const li = document.createElement("li");
+function typeAboutName(element, name) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    element.textContent = name;
+    return;
+  }
 
-            li.textContent = profile.title;
+  element.textContent = "";
+  element.classList.add("typewriter-name");
 
-            roles.appendChild(li);
+  let characterIndex = 0;
+  const typeNextCharacter = () => {
+    element.textContent = name.slice(0, characterIndex + 1);
+    characterIndex += 1;
 
-        }
-
-        // Contact Links
-        const emailLink = document.getElementById("contact-email");
-        if (emailLink && profile.email) {
-            emailLink.href = `mailto:${profile.email}`;
-        }
-
-        const directEmail = document.getElementById("direct-email-btn");
-        if (directEmail && profile.email) {
-            directEmail.href = `mailto:${profile.email}`;
-        }
-
-        const githubLink = document.getElementById("contact-github");
-        if (githubLink && profile.github) {
-            githubLink.href = profile.github;
-        }
-
-        const linkedinLink = document.getElementById("contact-linkedin");
-        if (linkedinLink && profile.linkedin) {
-            linkedinLink.href = profile.linkedin;
-        }
-
-        // Availability Status
-        const availabilityText = document.getElementById("availability-text");
-        if (availabilityText) {
-            availabilityText.textContent = profile.available ? "Available" : "Unavailable";
-        }
-
-        // Bio
-        const bioElement = document.getElementById("profile-bio");
-        if (bioElement && profile.bio) {
-            bioElement.textContent = profile.bio;
-        }
-
-        // Location
-        const locationElement = document.getElementById("profile-location");
-        if (locationElement && profile.location) {
-            locationElement.textContent = profile.location;
-        }
-
-        console.log("✅ Profile Rendered");
-
+    if (characterIndex < name.length) {
+      window.setTimeout(typeNextCharacter, 90);
+    } else {
+      window.setTimeout(() => element.classList.remove("typewriter-name"), 700);
     }
+  };
 
-    catch (err) {
-
-        console.error("Profile Error:", err);
-
-    }
-
+  typeNextCharacter();
 }

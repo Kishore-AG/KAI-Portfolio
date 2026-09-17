@@ -2,78 +2,60 @@ import { getSkills } from "../services/skill.service.js";
 import { state } from "../js/state.js";
 
 export async function loadSkills() {
-
-    try {
-
-        const skills = await getSkills();
-
-        state.skills = skills;
-
-        renderSkills(skills);
-
-        console.log("✅ Skills Rendered");
-
+  try {
+    const skills = await getSkills();
+    state.skills = skills;
+    renderSkills(skills);
+    console.log("✅ Skills Rendered");
+  } catch (err) {
+    console.error("Skills Error:", err);
+    const container = document.getElementById("skills-editorial");
+    if (container) {
+      container.innerHTML = `<p class="section-empty" style="grid-column:1/-1;">Unable to load skills.</p>`;
     }
-
-    catch (err) {
-
-        console.error("Skills Error:", err);
-
-    }
-
+  }
 }
 
 function renderSkills(skills) {
+  const container = document.getElementById("skills-editorial");
+  if (!container) return;
 
-    const container = document.getElementById("skills-grid");
+  const loading = document.getElementById("skills-loading");
+  if (loading) loading.remove();
 
-    container.innerHTML = "";
+  container.innerHTML = "";
 
-    if (!skills.length) {
+  if (!skills || !skills.length) {
+    container.innerHTML = `<p class="section-empty" style="grid-column:1/-1;">No skills listed yet.</p>`;
+    return;
+  }
 
-        container.innerHTML = "<p>No Skills Available</p>";
+  const sorted = [...skills].sort(
+    (a, b) => (a.display_order || 0) - (b.display_order || 0)
+  );
 
-        return;
-
-    }
-
-    skills.forEach(skill => {
-
-        container.innerHTML += createSkillCard(skill);
-
-    });
-
+  sorted.forEach((skill, index) => {
+    container.appendChild(createSkillBlock(skill, index));
+  });
 }
 
-function createSkillCard(skill) {
+function createSkillBlock(skill, index) {
+  const block = document.createElement("div");
+  block.className = "skill-category-block";
+  block.setAttribute("data-reveal", "");
+  block.setAttribute("data-reveal-delay", String(Math.min(index + 1, 5)));
 
-    const technologies = skill.technologies
-        ? skill.technologies
-            .split(",")
-            .map(
-                tech => `<span class="chip">${tech.trim()}</span>`
-            )
-            .join("")
-        : "";
+  const techItems = skill.technologies
+    ? skill.technologies
+        .split(",")
+        .map(t => `<div class="skill-tech-item">${t.trim()}</div>`)
+        .join("")
+    : "<div class='skill-tech-item' style='color:var(--fg-muted)'>—</div>";
 
-    return `
+  block.innerHTML = `
+    <div class="skill-cat-label">${skill.category}</div>
+    <div class="skill-tech-list">${techItems}</div>
+  `;
 
-    <article class="skill-card">
-
-        <h3 class="skill-title">
-
-            ${skill.category}
-
-        </h3>
-
-        <div class="skill-list">
-
-            ${technologies}
-
-        </div>
-
-    </article>
-
-    `;
-
+  return block;
 }

@@ -2,69 +2,72 @@ import { getEducation } from "../services/education.service.js";
 import { state } from "../js/state.js";
 
 export async function loadEducation() {
-
-    try {
-
-        const education = await getEducation();
-
-        state.education = education;
-
-        renderEducation(education);
-
-        console.log("✅ Education Rendered");
-
+  try {
+    const education = await getEducation();
+    state.education = education;
+    renderEducation(education);
+    console.log("✅ Education Rendered");
+  } catch (err) {
+    console.error("Education Error:", err);
+    const container = document.getElementById("education-timeline");
+    if (container) {
+      container.innerHTML = `<p class="section-empty">Unable to load education.</p>`;
     }
-
-    catch (err) {
-
-        console.error("Education Error:", err);
-
-    }
-
+  }
 }
 
 function renderEducation(education) {
+  const container = document.getElementById("education-timeline");
+  if (!container) return;
 
-    const container = document.getElementById("education-grid");
+  const loading = document.getElementById("education-loading");
+  if (loading) loading.remove();
 
-    container.innerHTML = "";
+  container.innerHTML = "";
 
-    if (!education.length) {
+  if (!education || !education.length) {
+    container.innerHTML = `<p class="section-empty">No education listed.</p>`;
+    return;
+  }
 
-        container.innerHTML = "<p>No Education Available</p>";
+  const sorted = [...education].sort(
+    (a, b) => (a.display_order || 0) - (b.display_order || 0)
+  );
 
-        return;
-
-    }
-
-    education.forEach(item => {
-
-        container.innerHTML += createEducationCard(item);
-
-    });
-
+  sorted.forEach((item, index) => {
+    container.appendChild(createEduEntry(item, index));
+  });
 }
 
-function createEducationCard(item) {
-    const hasField = item.description && item.description !== "string" && item.description.trim() !== "";
+function createEduEntry(item, index) {
+  const div = document.createElement("div");
+  div.className = "edu-entry";
+  div.setAttribute("data-reveal", "");
+  div.setAttribute("data-reveal-delay", String(Math.min(index + 1, 5)));
 
-    return `
-    <div class="education-card">
-        <div class="education-icon">🎓</div>
-        <div class="education-content">
-            <h3 class="education-degree">
-                ${item.degree}
-            </h3>
-            ${hasField ? `<h4 class="education-field">${item.description}</h4>` : ""}
-            <p class="education-college">
-                ${item.institution}
-            </p>
-            <div class="education-meta">
-                <span>${item.start_year} - ${item.end_year}</span>
-                <span>${item.status}</span>
-                <span>Grade : ${item.grade}</span>
-            </div>
-        </div>
+  const endYear = item.end_year || "Present";
+  const yearRange = `${item.start_year} — ${endYear}`;
+
+  const hasDesc =
+    item.description &&
+    item.description !== "string" &&
+    item.description.trim() !== "";
+
+  const hasGrade =
+    item.grade &&
+    item.grade !== "string" &&
+    item.grade.trim() !== "";
+
+  div.innerHTML = `
+    <p class="edu-year">${yearRange}</p>
+    <h3 class="edu-degree">${item.degree}</h3>
+    <p class="edu-institution">${item.institution}</p>
+    <div class="edu-meta-row">
+      <span class="edu-status-badge">${item.status}</span>
+      ${hasGrade ? `<span class="edu-grade">Grade: ${item.grade}</span>` : ""}
     </div>
-    `;
+    ${hasDesc ? `<p class="edu-desc">${item.description}</p>` : ""}
+  `;
+
+  return div;
 }

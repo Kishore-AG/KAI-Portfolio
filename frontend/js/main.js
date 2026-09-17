@@ -6,38 +6,32 @@ import { loadSkills } from "../modules/skill.module.js";
 import { loadEducation } from "../modules/education.module.js";
 import { loadCertifications } from "../modules/certification.module.js";
 import { initializeResumeDownload } from "../modules/resume.module.js";
-import { initializeContactButton } from "../modules/contact.module.js";
-import "./admin-entry.js";
 
 /**
- * KAI OS Application Entry Point
+ * KAI Portfolio — Application Entry Point
  */
-
 async function initializeApp() {
+  console.log("🚀 KAI Portfolio Starting...");
 
-    console.log("🚀 KAI OS Starting...");
+  initializeRouter();
 
-    initializeRouter();
+  // Load all data concurrently where possible
+  // Profile first (populates shared data like email/github)
+  await loadProfile();
 
-    await loadProfile();
+  // Remaining sections load concurrently
+  await Promise.allSettled([
+    loadProjects(),
+    loadResearch(),
+    loadSkills(),
+    loadEducation(),
+    loadCertifications(),
+  ]);
 
-    await loadProjects();
+  // Wire up resume download button
+  initializeResumeDownload();
 
-    await loadResearch();
-
-    await loadSkills();
-
-    await loadEducation();
-
-    await loadCertifications();
-
-    initializeResumeDownload();
-
-    initializeContactButton();
-
-    console.log("✅ KAI OS Ready");
-
+  console.log("✅ KAI Portfolio Ready");
 }
 
-// Start Application
 initializeApp();

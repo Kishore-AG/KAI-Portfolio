@@ -29,6 +29,7 @@ from fastapi.staticfiles import StaticFiles
 import os
 import models
 from api.routes.upload import router as upload_router
+from api.routes.contact import router as contact_router
 
 from dotenv import load_dotenv
 
@@ -84,6 +85,8 @@ app.include_router(kai_knowledge_router)
 app.include_router(kai_chat.router)
 
 app.include_router(upload_router)
+
+app.include_router(contact_router)
 
 os.makedirs("uploads", exist_ok=True)
 

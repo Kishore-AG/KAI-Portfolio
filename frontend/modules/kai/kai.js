@@ -44,19 +44,53 @@ function initializeKAI() {
 function welcomeMessage() {
   addAssistantMessage(
     "Hello! I'm KAI, Kishore's AI assistant. How can I help you today?",
+    false
   );
 }
 
-function addAssistantMessage(message) {
+async function typeHtml(element, htmlContent, speed = 15) {
+  const temp = document.createElement("div");
+  temp.innerHTML = htmlContent;
+  element.innerHTML = "";
+
+  async function typeNode(node, parent) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const text = node.textContent;
+      const textNode = document.createTextNode("");
+      parent.appendChild(textNode);
+      for (let i = 0; i < text.length; i++) {
+        textNode.textContent += text[i];
+        scrollBottom();
+        await new Promise((r) => setTimeout(r, speed));
+      }
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      const clone = node.cloneNode(false);
+      parent.appendChild(clone);
+      for (const child of node.childNodes) {
+        await typeNode(child, clone);
+      }
+    }
+  }
+
+  for (const child of temp.childNodes) {
+    await typeNode(child, element);
+  }
+}
+
+async function addAssistantMessage(message, animate = true) {
   const bubble = document.createElement("div");
-
   bubble.className = "kai-message assistant";
-
-  bubble.innerHTML = formatAssistantMessage(message);
-
   chatContainer.appendChild(bubble);
-
   scrollBottom();
+
+  const formatted = formatAssistantMessage(message);
+
+  if (animate) {
+    await typeHtml(bubble, formatted, 12);
+  } else {
+    bubble.innerHTML = formatted;
+    scrollBottom();
+  }
 }
 
 function formatAssistantMessage(message) {
@@ -171,26 +205,21 @@ async function sendMessage() {
   const actionReply = handleAction(message);
 
   if (actionReply) {
-    addAssistantMessage(actionReply);
-
+    await addAssistantMessage(actionReply);
     inputBox.value = "";
-
     return;
   }
   setLoading(true);
 
   inputBox.value = "";
-
   showTyping();
 
   try {
     const response = await fetch(API_URL, {
       method: "POST",
-
       headers: {
         "Content-Type": "application/json",
       },
-
       body: JSON.stringify({
         message,
       }),
@@ -201,17 +230,16 @@ async function sendMessage() {
     }
 
     const data = await response.json();
-
     removeTyping();
+    
+    // Type out the message while keeping loading state active (input disabled)
+    await addAssistantMessage(data.response);
+    
     setLoading(false);
-
-    addAssistantMessage(data.response);
   } catch (error) {
     removeTyping();
+    await addAssistantMessage("⚠️ Sorry, I'm unable to respond right now.");
     setLoading(false);
-
-    addAssistantMessage("⚠️ Sorry, I'm unable to respond right now.");
-
     console.error(error);
   }
 }
@@ -282,15 +310,11 @@ export async function askKAIAbout(type, id, question = "") {
     );
 
     const data = await response.json();
-
     removeTyping();
-
-    addAssistantMessage(data.response);
+    await addAssistantMessage(data.response);
   } catch (error) {
     removeTyping();
-
-    addAssistantMessage("⚠️ Unable to explain this item.");
-
+    await addAssistantMessage("⚠️ Unable to explain this item.");
     console.error(error);
   }
 }

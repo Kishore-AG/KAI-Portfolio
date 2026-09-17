@@ -1,6 +1,7 @@
 <div align="center">
 
-#  KAI OS
+# KAI OS
+
 ### AI-Powered Operating System Portfolio
 
 A full-stack, dynamically manageable developer portfolio with a built-in AI assistant that can answer questions about the projects, skills, and experience inside it — in real time.
@@ -17,7 +18,7 @@ A full-stack, dynamically manageable developer portfolio with a built-in AI assi
 
 ## Overview
 
-**KAI OS** reimagines the traditional portfolio site as a small, self-contained *operating system*: a public-facing interface that presents projects, research, skills, education, and certifications, backed by a private **admin dashboard** for managing all of that content without touching code, and an integrated **AI assistant ("KAI")** that can converse with visitors about the portfolio's contents using retrieval-augmented generation.
+**KAI OS** reimagines the traditional portfolio site as a small, self-contained _operating system_: a public-facing interface that presents projects, research, skills, education, and certifications, backed by a private **admin dashboard** for managing all of that content without touching code, and an integrated **AI assistant ("KAI")** that can converse with visitors about the portfolio's contents using retrieval-augmented generation.
 
 It's built as a decoupled system — a FastAPI backend exposing a REST API, and a modular vanilla JavaScript frontend that consumes it — so the two can be developed, deployed, and scaled independently.
 
@@ -81,14 +82,14 @@ KAI-OS/
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Backend Framework | FastAPI |
-| ORM / Database | SQLAlchemy, SQLite |
-| Auth | OAuth2 + JWT (`python-jose`), `passlib[bcrypt]` |
-| AI / LLM | Groq API (Llama 3.3 70B), ChromaDB (vector storage) |
-| Frontend | HTML5, CSS3, Vanilla JavaScript (ES Modules) |
-| Server | Uvicorn (ASGI) |
+| Layer             | Technology                                          |
+| ----------------- | --------------------------------------------------- |
+| Backend Framework | FastAPI                                             |
+| ORM / Database    | SQLAlchemy, SQLite                                  |
+| Auth              | OAuth2 + JWT (`python-jose`), `passlib[bcrypt]`     |
+| AI / LLM          | Groq API (Llama 3.3 70B), ChromaDB (vector storage) |
+| Frontend          | HTML5, CSS3, Vanilla JavaScript (ES Modules)        |
+| Server            | Uvicorn (ASGI)                                      |
 
 ---
 
@@ -125,7 +126,18 @@ SECRET_KEY=your-secret-key
 ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=60
 GROQ_API_KEY=your-groq-api-key
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USERNAME=your-sending-address@gmail.com
+SMTP_PASSWORD=your-provider-app-password
+SMTP_FROM_EMAIL=your-sending-address@gmail.com
+SMTP_USE_TLS=true
 ```
+
+The contact form sends messages through `POST /contact/`. Configure these SMTP
+variables in the backend deployment before using it. For Gmail, use an app
+password rather than the normal account password. The profile email is used as
+the delivery recipient, and the visitor's email is set as `Reply-To`.
 
 ### 4. Create an admin user
 
@@ -152,19 +164,20 @@ The admin dashboard is available at `frontend/admin/index.html`.
 
 ## 📡 API Overview
 
-| Resource | Endpoint prefix |
-|---|---|
-| Authentication | `/auth` |
-| Admin | `/admin` |
-| Profile | `/profile` |
-| Projects | `/project` |
-| Research | `/research` |
-| Skills | `/skill` |
-| Education | `/education` |
-| Certifications | `/certification` |
-| Resume | `/resume` |
-| File Uploads | `/upload` |
-| KAI Assistant | `/kai/chat`, `/kai/explain` |
+| Resource       | Endpoint prefix             |
+| -------------- | --------------------------- |
+| Authentication | `/auth`                     |
+| Admin          | `/admin`                    |
+| Profile        | `/profile`                  |
+| Projects       | `/project`                  |
+| Research       | `/research`                 |
+| Skills         | `/skill`                    |
+| Education      | `/education`                |
+| Certifications | `/certification`            |
+| Resume         | `/resume`                   |
+| File Uploads   | `/upload`                   |
+| Contact        | `/contact`                  |
+| KAI Assistant  | `/kai/chat`, `/kai/explain` |
 
 Full interactive documentation is available via Swagger UI at `/docs` once the server is running.
 
