@@ -1,6 +1,6 @@
+import json
+import urllib.request
 import logging
-import smtplib
-from email.message import EmailMessage
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
@@ -13,7 +13,6 @@ from services.profile_service import ProfileService
 router = APIRouter(prefix="/contact", tags=["Contact"])
 logger = logging.getLogger(__name__)
 
-
 @router.post("/")
 def send_contact_message(
     contact: ContactRequest,
@@ -25,27 +24,32 @@ def send_contact_message(
     if not recipient:
         raise HTTPException(status_code=503, detail="Contact recipient is not configured")
 
-    if not all((settings.SMTP_HOST, settings.SMTP_USERNAME, settings.SMTP_PASSWORD)):
+    if not settings.RESEND_API_KEY:
         raise HTTPException(status_code=503, detail="Email delivery is not configured")
 
-    message = EmailMessage()
-    message["Subject"] = f"Portfolio contact from {contact.name}"
-    message["From"] = settings.SMTP_FROM_EMAIL or settings.SMTP_USERNAME
-    message["To"] = recipient
-    message["Reply-To"] = contact.email
-    message.set_content(
-        f"Name: {contact.name}\n"
-        f"Email: {contact.email}\n\n"
-        f"{contact.message}"
-    )
+    url = "https://api.resend.com/emails"
+    
+    # Resend testing domains use onboarding@resend.dev and can only send TO your registered email
+    payload = {
+        "from": "onboarding@resend.dev",
+        "to": [recipient],
+        "reply_to": contact.email,
+        "subject": f"Portfolio contact from {contact.name}",
+        "text": f"Name: {contact.name}\nEmail: {contact.email}\n\n{contact.message}"
+    }
+
+    data = json.dumps(payload).encode("utf-8")
+    
+    req = urllib.request.Request(url, data=data, headers={
+        "Authorization": f"Bearer {settings.RESEND_API_KEY}",
+        "Content-Type": "application/json"
+    })
 
     try:
-        with smtplib.SMTP(settings.SMTP_HOST, settings.SMTP_PORT, timeout=20) as smtp:
-            if settings.SMTP_USE_TLS:
-                smtp.starttls()
-            smtp.login(settings.SMTP_USERNAME, settings.SMTP_PASSWORD)
-            smtp.send_message(message)
-    except (OSError, smtplib.SMTPException):
+        with urllib.request.urlopen(req) as response:
+            if response.status not in (200, 201):
+                raise HTTPException(status_code=502, detail="Email could not be delivered")
+    except Exception as e:
         logger.exception("Contact email delivery failed")
         raise HTTPException(status_code=502, detail="Email could not be delivered")
 

@@ -20,6 +20,6 @@ class Settings:
     SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
     SMTP_FROM_EMAIL = os.getenv("SMTP_FROM_EMAIL")
     SMTP_USE_TLS = os.getenv("SMTP_USE_TLS", "true").lower() == "true"
-
+    RESEND_API_KEY = os.getenv("RESEND_API_KEY")
 
 settings = Settings()
